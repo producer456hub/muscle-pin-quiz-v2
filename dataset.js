@@ -1376,8 +1376,7 @@ window.MUSCLE_DATA = {
       "Transverse abdominis"
      ]
     }
-   ],
-   "updated": true
+   ]
   },
   {
    "id": "shoulder",
@@ -1624,14 +1623,14 @@ window.MUSCLE_DATA = {
    "title": "Arm",
    "questions": [
     {
-     "image": "images/arm_ant_blank.png",
-     "width_px": 760,
-     "height_px": 779,
+     "image": "images/ul_Biceps_brachii.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      485,
-      310,
-      515,
-      340
+      182,
+      128,
+      210,
+      156
      ],
      "answer": "Biceps brachii (short head)",
      "view_label_pool": [
@@ -1648,14 +1647,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/arm_ant_blank.png",
-     "width_px": 760,
-     "height_px": 779,
+     "image": "images/ul_Biceps_brachii.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      563,
-      350,
-      593,
-      380
+      198,
+      96,
+      226,
+      124
      ],
      "answer": "Biceps brachii (long head)",
      "view_label_pool": [
@@ -1672,14 +1671,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/arm_ant_blank.png",
-     "width_px": 760,
-     "height_px": 779,
+     "image": "images/ul_Brachialis.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      610,
-      673,
-      640,
-      703
+      167,
+      116,
+      195,
+      144
      ],
      "answer": "Brachialis",
      "view_label_pool": [
@@ -1696,14 +1695,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/arm_post_blank.png",
-     "width_px": 600,
-     "height_px": 1504,
+     "image": "images/ul_Triceps_brachii.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      175,
-      810,
-      205,
-      840
+      202,
+      114,
+      230,
+      142
      ],
      "answer": "Triceps brachii (lateral head)",
      "view_label_pool": [
@@ -1720,14 +1719,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/arm_post_blank.png",
-     "width_px": 600,
-     "height_px": 1504,
+     "image": "images/ul_Triceps_brachii.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      318,
-      891,
-      348,
-      921
+      184,
+      94,
+      212,
+      122
      ],
      "answer": "Triceps brachii (long head)",
      "view_label_pool": [
@@ -1744,14 +1743,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/arm_post_blank.png",
-     "width_px": 600,
-     "height_px": 1504,
+     "image": "images/ul_Triceps_brachii.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      318,
-      1362,
-      348,
-      1392
+      190,
+      142,
+      218,
+      170
      ],
      "answer": "Triceps brachii (medial head)",
      "view_label_pool": [
@@ -1767,7 +1766,8 @@ window.MUSCLE_DATA = {
       "Triceps brachii (medial head)"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "forearm",
@@ -2922,14 +2922,14 @@ window.MUSCLE_DATA = {
    "title": "Leg",
    "questions": [
     {
-     "image": "images/leg_ant_blank.png",
-     "width_px": 265,
-     "height_px": 725,
+     "image": "images/leg_ant_sobo.png",
+     "width_px": 670,
+     "height_px": 1608,
      "bbox_px": [
-      103,
-      185,
-      133,
-      215
+      219,
+      459,
+      251,
+      491
      ],
      "answer": "Tibialis anterior",
      "view_label_pool": [
@@ -2947,14 +2947,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/leg_ant_blank.png",
-     "width_px": 265,
-     "height_px": 725,
+     "image": "images/leg_ant_sobo.png",
+     "width_px": 670,
+     "height_px": 1608,
      "bbox_px": [
-      57,
-      235,
-      87,
-      265
+      184,
+      659,
+      216,
+      691
      ],
      "answer": "Extensor digitorum longus",
      "view_label_pool": [
@@ -2972,14 +2972,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/leg_ant_blank.png",
-     "width_px": 265,
-     "height_px": 725,
+     "image": "images/leg_ant_sobo.png",
+     "width_px": 670,
+     "height_px": 1608,
      "bbox_px": [
-      67,
-      370,
-      97,
-      400
+      254,
+      824,
+      286,
+      856
      ],
      "answer": "Extensor hallucis longus",
      "view_label_pool": [
@@ -2997,14 +2997,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/leg_ant_blank.png",
-     "width_px": 265,
-     "height_px": 725,
+     "image": "images/leg_ant_sobo.png",
+     "width_px": 670,
+     "height_px": 1608,
      "bbox_px": [
-      31,
-      255,
-      61,
-      285
+      154,
+      374,
+      186,
+      406
      ],
      "answer": "Fibularis longus",
      "view_label_pool": [
@@ -3022,14 +3022,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/leg_post_blank.png",
-     "width_px": 420,
-     "height_px": 484,
+     "image": "images/leg_post_sobo.png",
+     "width_px": 530,
+     "height_px": 1598,
      "bbox_px": [
-      105,
-      95,
-      135,
-      125
+      209,
+      459,
+      241,
+      491
      ],
      "answer": "Gastrocnemius",
      "view_label_pool": [
@@ -3047,14 +3047,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/leg_post_blank.png",
-     "width_px": 420,
-     "height_px": 484,
+     "image": "images/leg_post_sobo.png",
+     "width_px": 530,
+     "height_px": 1598,
      "bbox_px": [
-      113,
-      230,
-      143,
-      260
+      319,
+      724,
+      351,
+      756
      ],
      "answer": "Soleus",
      "view_label_pool": [
@@ -3072,14 +3072,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/leg_post_blank.png",
-     "width_px": 420,
-     "height_px": 484,
+     "image": "images/leg_post_sobo.png",
+     "width_px": 530,
+     "height_px": 1598,
      "bbox_px": [
-      100,
-      320,
-      130,
-      350
+      229,
+      999,
+      261,
+      1031
      ],
      "answer": "Calcaneal (Achilles) tendon",
      "view_label_pool": [
@@ -3096,7 +3096,8 @@ window.MUSCLE_DATA = {
       "Tibialis posterior"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "upperlimb",
