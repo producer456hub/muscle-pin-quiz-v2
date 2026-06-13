@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muscle Lab Practical — Pin Quiz (v2)</title>
+<style>
+  :root{--bg:#fafafa;--card:#fff;--ink:#1a1a1a;--muted:#666;--accent:#2563eb;--accent-hover:#1d4ed8;
+    --good:#16a34a;--bad:#dc2626;--warn:#f59e0b;--border:#e5e7eb;--marker:#00e000;}
+  *{box-sizing:border-box;} body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);margin:0;padding:16px;line-height:1.4;}
+  .app{max-width:1100px;margin:0 auto;} header{text-align:center;margin-bottom:16px;}
+  h1{margin:0 0 4px 0;font-size:22px;} .subtitle{color:var(--muted);font-size:13px;}
+  .setup,.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;
+    margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  .setup h2{margin-top:0;font-size:17px;}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px;}
+  .checkbox-group,.radio-group{display:flex;flex-wrap:wrap;gap:10px;}
+  .upd-badge{background:#ffe9a8;color:#7a5b00;border-radius:8px;padding:0 6px;font-size:.72em;font-weight:600;}
+  .updated-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;}
+  .checkbox-group label,.radio-group label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:#f9fafb;font-size:13px;}
+  button{background:var(--accent);color:#fff;border:0;padding:10px 18px;border-radius:8px;font-size:14px;
+    font-weight:600;cursor:pointer;transition:background .15s;}
+  button:hover{background:var(--accent-hover);} button.secondary{background:#6b7280;}
+  button.secondary:hover{background:#4b5563;} button:disabled{background:#d1d5db;cursor:not-allowed;}
+  button.warn{background:var(--warn);} button.warn:hover{background:#d97706;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px;flex-wrap:wrap;}
+  .topbar .score{font-size:14px;color:var(--muted);} .topbar .score strong{color:var(--ink);}
+  .progress{height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden;margin-bottom:12px;}
+  .progress-fill{height:100%;background:var(--accent);transition:width .3s;}
+  .img-area{max-height:80vh;overflow:auto;margin-bottom:14px;text-align:center;}
+  .image-wrap{position:relative;display:inline-block;vertical-align:top;background:#fff;
+    border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .image-wrap img{display:block;width:auto;height:auto;
+    max-width:calc(min(92vw,1040px) * var(--zoom,1));max-height:calc(72vh * var(--zoom,1));}
+  .image-wrap svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .image-wrap.editing{cursor:crosshair;outline:3px solid var(--warn);}
+  .pin-ring{fill:rgba(0,224,0,.12);stroke:var(--marker);}
+  .pin-dot{fill:var(--marker);}
+  .marker-pulse{animation:pulse 1.5s ease-in-out infinite;transform-origin:center;transform-box:fill-box;}
+  .pin-ctrl{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:10px;flex-wrap:wrap;}
+  .pin-ctrl input[type=range]{flex:0 1 200px;}
+  .zoom-ctrl{margin-left:auto;display:inline-flex;gap:6px;align-items:center;}
+  .zbtn{background:#e5e7eb;color:#374151;padding:3px 11px;font-size:14px;font-weight:700;border-radius:5px;line-height:1.1;}
+  .zbtn:hover{background:#d1d5db;}
+  #q-zoomval,#f-zoomval{min-width:42px;text-align:center;font-variant-numeric:tabular-nums;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+  .question-text{font-size:16px;font-weight:600;margin:8px 0 12px 0;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(max-width:600px){.options{grid-template-columns:1fr;}}
+  .option{background:#f9fafb;color:var(--ink);border:2px solid var(--border);border-radius:8px;padding:12px 14px;
+    cursor:pointer;text-align:left;font-size:14px;font-weight:500;transition:all .15s;display:flex;align-items:center;gap:10px;}
+  .option .key{background:#e5e7eb;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;color:var(--muted);
+    font-family:ui-monospace,Menlo,Consolas,monospace;}
+  .option:hover:not(:disabled){border-color:var(--accent);background:#eff6ff;}
+  .option.correct{border-color:var(--good);background:#f0fdf4;color:var(--good);font-weight:600;}
+  .option.wrong{border-color:var(--bad);background:#fef2f2;color:var(--bad);font-weight:600;}
+  .option:disabled{cursor:not-allowed;opacity:.85;}
+  .feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:600;}
+  .feedback.correct{background:#f0fdf4;color:var(--good);border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:var(--bad);border:1px solid #fca5a5;}
+  .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center;}
+  .flashcard{perspective:1200px;margin-bottom:14px;user-select:none;}
+  .flash-inner{position:relative;min-height:80px;transform-style:preserve-3d;transition:transform .6s;}
+  .flash-inner.flipped{transform:rotateY(180deg);}
+  .flash-front,.flash-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+  .flash-back{position:absolute;inset:0;transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;
+    background:#1f2937;color:#fff;border-radius:8px;font-size:28px;font-weight:700;padding:30px;text-align:center;}
+  .flip-hint{text-align:center;color:var(--muted);font-size:13px;margin-bottom:8px;}
+  .complete{text-align:center;padding:30px;} .complete .big-score{font-size:48px;font-weight:700;color:var(--accent);margin:12px 0;}
+  .mode-tabs{display:flex;gap:6px;margin-bottom:14px;background:#f3f4f6;padding:4px;border-radius:8px;}
+  .hidden{display:none!important;} .kbd-hint{color:var(--muted);font-size:12px;margin-top:10px;text-align:center;}
+  .edit-banner{background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:10px 14px;border-radius:8px;
+    font-size:14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .corr-bar{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-bottom:14px;
+    font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+  .pill{background:#dbeafe;color:#1e40af;border-radius:999px;padding:2px 10px;font-weight:700;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Muscle Lab Practical — Pin Quiz <span style="font-size:0.5em;vertical-align:middle;opacity:0.6;">v2</span></h1>
+    <div class="subtitle">Identify the pinned muscle · multiple choice &amp; flashcards · Week 8</div>
+  </header>
+
+  <section id="setup" class="setup">
+    <h2>Start a session</h2>
+    <div id="corr-bar" class="corr-bar hidden">
+      <span>You have <span class="pill" id="corr-count">0</span> pin correction(s) saved on this device.</span>
+      <button class="warn" id="publish-btn">⬇ Publish corrected dataset</button>
+    </div>
+    <div class="row"><strong>Regions:</strong><div id="section-checks" class="checkbox-group"></div></div>
+    <div class="row" id="updated-row"><strong></strong><label class="updated-toggle"><input type="checkbox" id="updated-only" /> ✨ Just review the updated regions <span id="updated-names" style="color:#888"></span></label></div>
+    <div class="row"><strong>Mode:</strong><div class="radio-group">
+      <label><input type="radio" name="mode" value="quiz" checked /> Multiple choice</label>
+      <label><input type="radio" name="mode" value="flash" /> Flashcards</label></div></div>
+    <div class="row"><strong>Order:</strong><div class="radio-group">
+      <label><input type="radio" name="order" value="shuffle" checked /> Shuffle</label>
+      <label><input type="radio" name="order" value="sequential" /> In order</label></div></div>
+    <div class="row"><strong>How many:</strong><div class="radio-group">
+      <label><input type="radio" name="count" value="10" /> 10</label>
+      <label><input type="radio" name="count" value="25" checked /> 25</label>
+      <label><input type="radio" name="count" value="50" /> 50</label>
+      <label><input type="radio" name="count" value="all" /> All</label></div></div>
+    <div class="row"><button id="start-btn">Start session</button>
+      <span id="pool-size" class="subtitle"></span></div>
+  </section>
+
+  <section id="quiz-screen" class="card hidden">
+    <div class="topbar">
+      <div class="score">Q <strong id="q-index">1</strong> / <strong id="q-total">10</strong> · Score: <strong id="q-score">0</strong></div>
+      <button class="secondary" onclick="endSession()">End session</button>
+    </div>
+    <div class="progress"><div id="q-progress" class="progress-fill" style="width:0%"></div></div>
+    <div id="q-edit-banner" class="edit-banner hidden"></div>
+    <div class="pin-ctrl">📍 Pin size <input type="range" id="q-pinsize" min="0.012" max="0.075" step="0.002" />
+      <span class="zoom-ctrl">🔍 <button type="button" class="zbtn" data-zoom="out">−</button>
+      <span id="q-zoomval">100%</span><button type="button" class="zbtn" data-zoom="in">+</button>
+      <button type="button" class="zbtn" data-zoom="fit">Fit</button></span></div>
+    <div class="img-area"><div class="image-wrap" id="q-imgwrap"><img id="q-img" alt="muscle image" />
+      <svg id="q-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg></div></div>
+    <div id="q-question-text" class="question-text">What muscle / structure is pinned?</div>
+    <div id="q-options" class="options"></div>
+    <div id="q-feedback" class="feedback hidden"></div>
+    <div class="actions">
+      <button id="next-btn" disabled>Next →</button>
+      <button id="skip-btn" class="secondary">Skip / Show answer</button>
+      <button id="q-fix-btn" class="warn">✎ Fix pin</button>
+    </div>
+    <div class="kbd-hint">Keys: 1–6 choose · Enter next · S skip</div>
+  </section>
+
+  <section id="flash-screen" class="card hidden">
+    <div class="topbar"><div class="score">Card <strong id="f-index">1</strong> / <strong id="f-total">10</strong></div>
+      <button class="secondary" onclick="endSession()">End session</button></div>
+    <div class="progress"><div id="f-progress" class="progress-fill" style="width:0%"></div></div>
+    <div id="f-edit-banner" class="edit-banner hidden"></div>
+    <div class="pin-ctrl">📍 Pin size <input type="range" id="f-pinsize" min="0.012" max="0.075" step="0.002" />
+      <span class="zoom-ctrl">🔍 <button type="button" class="zbtn" data-zoom="out">−</button>
+      <span id="f-zoomval">100%</span><button type="button" class="zbtn" data-zoom="in">+</button>
+      <button type="button" class="zbtn" data-zoom="fit">Fit</button></span></div>
+    <div class="flip-hint">Click the card (or Space) to flip</div>
+    <div id="flash-card" class="flashcard"><div id="flash-inner" class="flash-inner">
+      <div class="flash-front"><div class="img-area" style="margin-bottom:0"><div class="image-wrap" id="f-imgwrap">
+        <img id="f-img" alt="muscle image" />
+        <svg id="f-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg></div></div></div>
+      <div id="flash-back" class="flash-back">—</div></div></div>
+    <div class="actions">
+      <button id="f-prev-btn" class="secondary">← Prev</button>
+      <button id="f-flip-btn">Flip</button>
+      <button id="f-next-btn">Next →</button>
+      <button id="f-fix-btn" class="warn">✎ Fix pin</button>
+    </div>
+    <div class="kbd-hint">Keys: Space flip · ← → navigate</div>
+  </section>
+
+  <section id="complete-screen" class="card hidden">
+    <div class="complete"><h2>Session complete!</h2>
+      <div id="final-score" class="big-score">0 / 0</div>
+      <div id="final-pct" class="subtitle">0%</div>
+      <div style="margin-top:20px;"><button onclick="resetToSetup()">New session</button></div></div>
+  </section>
+</div>
+
+<script src="dataset.js"></script>
+<script>
+const DATA = window.MUSCLE_DATA;
+const CORR_KEY = 'musclePinCorrections_v2'; // bumped: all images re-sourced 2026-06, old v1 corrections are for retired images
+let CORR = {};
+try { CORR = JSON.parse(localStorage.getItem(CORR_KEY) || '{}'); } catch(e){ CORR = {}; }
+const PIN_KEY = 'musclePinSize_v1';
+let PIN_SIZE = parseFloat(localStorage.getItem(PIN_KEY)) || 0.03;
+const ZOOM_KEY = 'musclePinZoom_v1';
+let ZOOM = parseFloat(localStorage.getItem(ZOOM_KEY)) || 1;
+let GLOBAL_LABELS = [];
+let state = null;
+let editing = false;
+
+function qKey(q){ return q.image + '|' + q.answer; }
+function bboxOf(q){ return CORR[qKey(q)] || q.bbox_px; }
+
+function initLabels(){
+  const set = new Set();
+  DATA.sections.forEach(s => s.questions.forEach(q => { (q.view_label_pool||[]).forEach(l=>set.add(l)); set.add(q.answer); }));
+  GLOBAL_LABELS = Array.from(set);
+}
+
+function buildSectionChecks(){
+  const wrap = document.getElementById('section-checks'); wrap.innerHTML='';
+  DATA.sections.forEach(s => {
+    const l = document.createElement('label');
+    l.innerHTML = `<input type="checkbox" value="${s.id}" data-updated="${s.updated?1:0}" checked /> ${s.title}${s.updated?' <span class="upd-badge">✨ updated</span>':''} <span style="color:#888">(${s.questions.length})</span>`;
+    wrap.appendChild(l);
+  });
+  ['change','click'].forEach(e=>wrap.addEventListener(e, ()=>{ syncUpdatedToggle(); updatePoolSize(); }));
+  const names = DATA.sections.filter(s=>s.updated).map(s=>s.title).join(', ');
+  const nameEl = document.getElementById('updated-names');
+  if(nameEl) nameEl.textContent = names ? '('+names+')' : '';
+  if(!names){ const r=document.getElementById('updated-row'); if(r) r.classList.add('hidden'); }
+}
+function applyUpdatedOnly(on){
+  document.querySelectorAll('#section-checks input').forEach(i=>{
+    if(on) i.checked = (i.dataset.updated==='1');
+    else i.checked = true;
+  });
+  updatePoolSize();
+}
+function syncUpdatedToggle(){
+  const boxes=Array.from(document.querySelectorAll('#section-checks input'));
+  const only = boxes.length && boxes.every(i=> i.checked === (i.dataset.updated==='1')) && boxes.some(i=>i.checked);
+  const t=document.getElementById('updated-only'); if(t) t.checked = only;
+}
+function selectedSections(){ return new Set(Array.from(document.querySelectorAll('#section-checks input:checked')).map(i=>i.value)); }
+function buildQuestions(){
+  const sel = selectedSections(); const out=[];
+  DATA.sections.forEach(s => { if(sel.has(s.id)) s.questions.forEach(q => out.push(Object.assign({_section:s.title}, q))); });
+  return out;
+}
+function updatePoolSize(){ document.getElementById('pool-size').textContent = `(${buildQuestions().length} questions in pool)`; }
+function refreshCorrBar(){
+  const n = Object.keys(CORR).length;
+  const bar = document.getElementById('corr-bar');
+  document.getElementById('corr-count').textContent = n;
+  bar.classList.toggle('hidden', n===0);
+}
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function pickN(arr,n){ return shuffle(arr.slice()).slice(0,n); }
+
+function startSession(){
+  const mode=document.querySelector('input[name="mode"]:checked').value;
+  const order=document.querySelector('input[name="order"]:checked').value;
+  const cs=document.querySelector('input[name="count"]:checked').value;
+  let qs=buildQuestions(); if(!qs.length){ alert('Pick at least one region.'); return; }
+  if(order==='shuffle') shuffle(qs);
+  const n = cs==='all'?qs.length:Math.min(parseInt(cs,10),qs.length);
+  qs=qs.slice(0,n);
+  state={mode,questions:qs,idx:0,score:0,answered:false};
+  document.getElementById('setup').classList.add('hidden');
+  if(mode==='quiz'){ show('quiz-screen'); document.getElementById('q-total').textContent=qs.length; renderQuiz(); }
+  else { show('flash-screen'); document.getElementById('f-total').textContent=qs.length; renderFlash(); }
+}
+function show(id){ document.getElementById(id).classList.remove('hidden'); }
+function endSession(){ if(state&&state.mode==='quiz') showComplete(); else resetToSetup(); }
+function resetToSetup(){ state=null; editing=false; ['quiz-screen','flash-screen','complete-screen'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  document.getElementById('setup').classList.remove('hidden'); refreshCorrBar(); updatePoolSize(); }
+function showComplete(){ ['quiz-screen','flash-screen'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  show('complete-screen'); const t=state.questions.length,sc=state.score;
+  document.getElementById('final-score').textContent=`${sc} / ${t}`;
+  document.getElementById('final-pct').textContent=`${t?Math.round(100*sc/t):0}% correct`; }
+
+function pinRadius(q){ return PIN_SIZE * Math.min(q.width_px, q.height_px); }
+function setMarker(svgEl,q){ svgEl.setAttribute('viewBox',`0 0 ${q.width_px} ${q.height_px}`);
+  const b=bboxOf(q); const cx=(b[0]+b[2])/2, cy=(b[1]+b[3])/2;
+  const r=pinRadius(q); const sw=Math.max(2, r*0.16);
+  svgEl.innerHTML=`<circle class="pin-ring marker-pulse" cx="${cx}" cy="${cy}" r="${r}" stroke-width="${sw}" />`+
+    `<circle class="pin-dot" cx="${cx}" cy="${cy}" r="${Math.max(2, r*0.17)}" />`; }
+function curSvg(){ return document.getElementById(state.mode==='quiz'?'q-svg':'f-svg'); }
+function setPinSize(v){ PIN_SIZE=+v; localStorage.setItem(PIN_KEY, PIN_SIZE);
+  const qs=document.getElementById('q-pinsize'), fs=document.getElementById('f-pinsize');
+  if(qs) qs.value=PIN_SIZE; if(fs) fs.value=PIN_SIZE;
+  if(state) setMarker(curSvg(), curQ()); }
+function applyZoom(){ ZOOM=Math.min(3,Math.max(0.4,Math.round(ZOOM*100)/100));
+  document.querySelector('.app').style.setProperty('--zoom', ZOOM);
+  localStorage.setItem(ZOOM_KEY, ZOOM);
+  ['q-zoomval','f-zoomval'].forEach(id=>{ const e=document.getElementById(id); if(e) e.textContent=Math.round(ZOOM*100)+'%'; }); }
+function zoomBump(kind){ if(kind==='fit') ZOOM=1; else ZOOM += (kind==='in'?0.2:-0.2); applyZoom(); }
+
+/* ---------- QUIZ ---------- */
+function renderQuiz(){
+  exitEdit();
+  const q=state.questions[state.idx];
+  document.getElementById('q-index').textContent=state.idx+1;
+  document.getElementById('q-score').textContent=state.score;
+  document.getElementById('q-progress').style.width=(100*state.idx/state.questions.length)+'%';
+  document.getElementById('q-img').src=q.image;
+  setMarker(document.getElementById('q-svg'),q);
+  // options: answer + 5 distractors (same-region pool first, then global)
+  let pool=(q.view_label_pool||[]).filter(t=>t!==q.answer);
+  let distr=pickN(pool,5);
+  if(distr.length<5){ const extra=GLOBAL_LABELS.filter(t=>t!==q.answer && !distr.includes(t)); distr=distr.concat(pickN(extra,5-distr.length)); }
+  const options=shuffle([q.answer,...distr]);
+  const wrap=document.getElementById('q-options'); wrap.innerHTML='';
+  options.forEach((opt,i)=>{ const b=document.createElement('button'); b.className='option'; b.dataset.text=opt;
+    b.innerHTML=`<span class="key">${i+1}</span><span>${esc(opt)}</span>`;
+    b.addEventListener('click',()=>chooseOption(b,opt,q.answer)); wrap.appendChild(b); });
+  const fb=document.getElementById('q-feedback'); fb.className='feedback hidden'; fb.textContent='';
+  state.answered=false; document.getElementById('next-btn').disabled=true;
+}
+function chooseOption(btn,chosen,correct){
+  if(state.answered||editing) return; state.answered=true;
+  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true;
+    if(o.dataset.text===correct) o.classList.add('correct'); else if(o===btn) o.classList.add('wrong'); });
+  const fb=document.getElementById('q-feedback');
+  if(chosen===correct){ state.score++; fb.className='feedback correct'; fb.textContent='✓ Correct!'; }
+  else { fb.className='feedback wrong'; fb.textContent=`✗ Correct answer: ${correct}`; }
+  document.getElementById('q-score').textContent=state.score;
+  document.getElementById('next-btn').disabled=false;
+}
+function skipQuestion(){ if(state.answered||editing) return; const q=state.questions[state.idx]; state.answered=true;
+  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true; if(o.dataset.text===q.answer) o.classList.add('correct'); });
+  const fb=document.getElementById('q-feedback'); fb.className='feedback wrong'; fb.textContent=`Answer: ${q.answer}`;
+  document.getElementById('next-btn').disabled=false; }
+function nextQuestion(){ if(editing) return; state.idx++; if(state.idx>=state.questions.length) showComplete(); else renderQuiz(); }
+
+/* ---------- FLASHCARDS ---------- */
+function renderFlash(){ exitEdit(); const q=state.questions[state.idx];
+  document.getElementById('f-index').textContent=state.idx+1;
+  document.getElementById('f-progress').style.width=(100*(state.idx+1)/state.questions.length)+'%';
+  document.getElementById('f-img').src=q.image; setMarker(document.getElementById('f-svg'),q);
+  document.getElementById('flash-back').textContent=q.answer;
+  document.getElementById('flash-inner').classList.remove('flipped'); }
+function flipFlash(){ if(editing) return; document.getElementById('flash-inner').classList.toggle('flipped'); }
+
+/* ---------- PIN EDIT MODE ---------- */
+function curQ(){ return state.questions[state.idx]; }
+function enterEdit(){
+  editing=true; const q=curQ(); const isQuiz=state.mode==='quiz';
+  const wrap=document.getElementById(isQuiz?'q-imgwrap':'f-imgwrap');
+  const banner=document.getElementById(isQuiz?'q-edit-banner':'f-edit-banner');
+  wrap.classList.add('editing');
+  banner.classList.remove('hidden');
+  banner.innerHTML=`<span><b>Fixing pin for:</b> ${esc(q.answer)} — click the correct spot on the image.</span>`+
+    `<button class="secondary" onclick="exitEdit()">Done</button>`;
+  wrap.onclick=(e)=>placePin(e,wrap,q,isQuiz);
+}
+function exitEdit(){
+  editing=false;
+  ['q-imgwrap','f-imgwrap'].forEach(id=>{ const w=document.getElementById(id); w.classList.remove('editing'); w.onclick=null; });
+  ['q-edit-banner','f-edit-banner'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+}
+function placePin(e,wrap,q,isQuiz){
+  const img=wrap.querySelector('img'); const r=img.getBoundingClientRect();
+  const px=(e.clientX-r.left)/r.width*q.width_px;
+  const py=(e.clientY-r.top)/r.height*q.height_px;
+  const b=bboxOf(q); const hw=(b[2]-b[0])/2, hh=(b[3]-b[1])/2;
+  const nb=[Math.round(px-hw),Math.round(py-hh),Math.round(px+hw),Math.round(py+hh)];
+  CORR[qKey(q)]=nb; localStorage.setItem(CORR_KEY,JSON.stringify(CORR));
+  setMarker(document.getElementById(isQuiz?'q-svg':'f-svg'),q);
+  const banner=document.getElementById(isQuiz?'q-edit-banner':'f-edit-banner');
+  banner.querySelector('span').innerHTML=`<b>Pin moved ✓</b> for ${esc(q.answer)}. Click again to nudge, or Done.`;
+}
+
+/* ---------- PUBLISH ---------- */
+function publish(){
+  const out=JSON.parse(JSON.stringify(DATA));
+  out.sections.forEach(s=>s.questions.forEach(q=>{ const k=q.image+'|'+q.answer; if(CORR[k]) q.bbox_px=CORR[k]; }));
+  const blob=new Blob(['window.MUSCLE_DATA = '+JSON.stringify(out,null,1)+';\n'],{type:'text/javascript'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='dataset.js'; a.click();
+  alert('Downloaded dataset.js with your '+Object.keys(CORR).length+' correction(s) baked in.\n\nReplace dataset.js in your repo and commit to make them permanent.');
+}
+
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+document.addEventListener('DOMContentLoaded',()=>{
+  if(!DATA){ document.getElementById('setup').innerHTML='<h2>dataset.js failed to load.</h2>'; return; }
+  initLabels(); buildSectionChecks(); updatePoolSize(); refreshCorrBar();
+  const updOnly=document.getElementById('updated-only');
+  if(updOnly) updOnly.addEventListener('change',e=>applyUpdatedOnly(e.target.checked));
+  document.getElementById('start-btn').addEventListener('click',startSession);
+  document.getElementById('next-btn').addEventListener('click',nextQuestion);
+  document.getElementById('skip-btn').addEventListener('click',skipQuestion);
+  document.getElementById('q-fix-btn').addEventListener('click',()=>editing?exitEdit():enterEdit());
+  document.getElementById('publish-btn').addEventListener('click',publish);
+  document.getElementById('q-pinsize').value=PIN_SIZE;
+  document.getElementById('f-pinsize').value=PIN_SIZE;
+  document.getElementById('q-pinsize').addEventListener('input',e=>setPinSize(e.target.value));
+  document.getElementById('f-pinsize').addEventListener('input',e=>setPinSize(e.target.value));
+  document.querySelectorAll('.zbtn').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation(); zoomBump(b.dataset.zoom);}));
+  applyZoom();
+  document.getElementById('flash-card').addEventListener('click',flipFlash);
+  document.getElementById('f-flip-btn').addEventListener('click',e=>{e.stopPropagation();flipFlash();});
+  document.getElementById('f-fix-btn').addEventListener('click',e=>{e.stopPropagation(); editing?exitEdit():enterEdit();});
+  document.getElementById('f-next-btn').addEventListener('click',e=>{e.stopPropagation(); if(editing)return;
+    if(state.idx<state.questions.length-1){state.idx++;renderFlash();} else resetToSetup();});
+  document.getElementById('f-prev-btn').addEventListener('click',e=>{e.stopPropagation(); if(editing)return;
+    if(state.idx>0){state.idx--;renderFlash();}});
+  document.addEventListener('keydown',e=>{
+    if(!state||editing) return;
+    if(state.mode==='quiz'){
+      if(!state.answered && /^[1-6]$/.test(e.key)){ const o=document.querySelectorAll('#q-options .option')[+e.key-1]; if(o)o.click(); }
+      else if(e.key==='Enter' && !document.getElementById('next-btn').disabled) nextQuestion();
+      else if(e.key.toLowerCase()==='s' && !state.answered) skipQuestion();
+    } else {
+      if(e.key===' '){ e.preventDefault(); flipFlash(); }
+      else if(e.key==='ArrowRight') document.getElementById('f-next-btn').click();
+      else if(e.key==='ArrowLeft') document.getElementById('f-prev-btn').click();
+    }
+  });
+});
+</script>
+</body>
+</html>

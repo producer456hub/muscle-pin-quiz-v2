@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+
+# disposable working artifacts from the image overhaul (kept on disk, not committed)
+dataset.js.bak
+images/_backups/
+images/_preview_*.png
+images/_fa_preview.png
+images/_src/
+images/_src2/
