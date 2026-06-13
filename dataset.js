@@ -1623,14 +1623,14 @@ window.MUSCLE_DATA = {
    "title": "Arm",
    "questions": [
     {
-     "image": "images/ul_Biceps_brachii.png",
-     "width_px": 250,
-     "height_px": 250,
+     "image": "images/arm_biceps_short.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      182,
-      128,
-      210,
-      156
+      456,
+      267,
+      500,
+      311
      ],
      "answer": "Biceps brachii (short head)",
      "view_label_pool": [
@@ -1647,14 +1647,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/ul_Biceps_brachii.png",
-     "width_px": 250,
-     "height_px": 250,
+     "image": "images/arm_biceps_long.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      198,
-      96,
-      226,
-      124
+      479,
+      280,
+      523,
+      324
      ],
      "answer": "Biceps brachii (long head)",
      "view_label_pool": [
@@ -1671,14 +1671,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/ul_Brachialis.png",
-     "width_px": 250,
-     "height_px": 250,
+     "image": "images/arm_brachialis.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      167,
-      116,
-      195,
-      144
+      432,
+      302,
+      476,
+      346
      ],
      "answer": "Brachialis",
      "view_label_pool": [
@@ -1695,14 +1695,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/ul_Triceps_brachii.png",
-     "width_px": 250,
-     "height_px": 250,
+     "image": "images/arm_triceps_lateral.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      202,
-      114,
-      230,
-      142
+      485,
+      270,
+      529,
+      314
      ],
      "answer": "Triceps brachii (lateral head)",
      "view_label_pool": [
@@ -1719,14 +1719,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/ul_Triceps_brachii.png",
-     "width_px": 250,
-     "height_px": 250,
+     "image": "images/arm_triceps_long.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      184,
-      94,
-      212,
-      122
+      458,
+      282,
+      502,
+      326
      ],
      "answer": "Triceps brachii (long head)",
      "view_label_pool": [
@@ -1743,14 +1743,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/ul_Triceps_brachii.png",
-     "width_px": 250,
-     "height_px": 250,
+     "image": "images/arm_triceps_medial.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      190,
-      142,
-      218,
-      170
+      472,
+      347,
+      516,
+      391
      ],
      "answer": "Triceps brachii (medial head)",
      "view_label_pool": [
