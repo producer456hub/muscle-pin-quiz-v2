@@ -1383,14 +1383,14 @@ window.MUSCLE_DATA = {
    "title": "Shoulder",
    "questions": [
     {
-     "image": "images/girdle_post_blank.png",
-     "width_px": 660,
-     "height_px": 465,
+     "image": "images/ul_Trapezius.png",
+     "width_px": 330,
+     "height_px": 330,
      "bbox_px": [
-      190,
-      190,
-      220,
-      220
+      149,
+      171,
+      179,
+      201
      ],
      "answer": "Trapezius",
      "view_label_pool": [
@@ -1409,14 +1409,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/girdle_post_blank.png",
-     "width_px": 660,
-     "height_px": 465,
+     "image": "images/ul_Deltoid.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      63,
-      200,
-      93,
-      230
+      23,
+      81,
+      53,
+      111
      ],
      "answer": "Deltoid",
      "view_label_pool": [
@@ -1435,14 +1435,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/girdle_post_blank.png",
-     "width_px": 660,
-     "height_px": 465,
+     "image": "images/ul_Rhomboid_minor.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      400,
-      175,
-      430,
-      205
+      109,
+      135,
+      139,
+      165
      ],
      "answer": "Rhomboid minor",
      "view_label_pool": [
@@ -1461,14 +1461,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/girdle_post_blank.png",
-     "width_px": 660,
-     "height_px": 465,
+     "image": "images/ul_Rhomboid_major.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      393,
-      213,
-      423,
-      243
+      109,
+      161,
+      139,
+      191
      ],
      "answer": "Rhomboid major",
      "view_label_pool": [
@@ -1487,14 +1487,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/rotatorcuff_blank.png",
-     "width_px": 738,
-     "height_px": 888,
+     "image": "images/ul_Supraspinatus.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      545,
-      55,
-      575,
-      85
+      160,
+      82,
+      190,
+      112
      ],
      "answer": "Supraspinatus",
      "view_label_pool": [
@@ -1513,14 +1513,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/rotatorcuff_blank.png",
-     "width_px": 738,
-     "height_px": 888,
+     "image": "images/ul_Infraspinatus.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      645,
-      235,
-      675,
-      265
+      164,
+      85,
+      194,
+      115
      ],
      "answer": "Infraspinatus",
      "view_label_pool": [
@@ -1539,14 +1539,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/rotatorcuff_blank.png",
-     "width_px": 738,
-     "height_px": 888,
+     "image": "images/ul_Teres_minor.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      500,
-      230,
-      530,
-      260
+      179,
+      101,
+      209,
+      131
      ],
      "answer": "Teres minor",
      "view_label_pool": [
@@ -1565,14 +1565,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/rotatorcuff_blank.png",
-     "width_px": 738,
-     "height_px": 888,
+     "image": "images/ul_Teres_major.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      525,
-      320,
-      555,
-      350
+      171,
+      95,
+      201,
+      125
      ],
      "answer": "Teres major",
      "view_label_pool": [
@@ -1591,14 +1591,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/rotatorcuff_blank.png",
-     "width_px": 738,
-     "height_px": 888,
+     "image": "images/ul_Deltoid.png",
+     "width_px": 250,
+     "height_px": 250,
      "bbox_px": [
-      675,
-      150,
-      705,
-      180
+      23,
+      81,
+      53,
+      111
      ],
      "answer": "Deltoid",
      "view_label_pool": [
@@ -1616,7 +1616,8 @@ window.MUSCLE_DATA = {
       "Trapezius"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "arm",
