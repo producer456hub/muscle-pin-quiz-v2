@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Term Glossary — Muscle Lab Practical</title>
+<style>
+  :root{--bg:#fafafa;--card:#fff;--ink:#1a1a1a;--muted:#666;--accent:#2563eb;--accent-hover:#1d4ed8;--border:#e5e7eb;}
+  *{box-sizing:border-box;} body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);margin:0;padding:16px;line-height:1.45;}
+  .app{max-width:900px;margin:0 auto;}
+  header{text-align:center;margin-bottom:14px;}
+  h1{margin:0 0 4px 0;font-size:22px;} .subtitle{color:var(--muted);font-size:13px;}
+  a.back{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;}
+  a.back:hover{text-decoration:underline;}
+  .toolbar{position:sticky;top:0;background:var(--bg);padding:10px 0;z-index:5;border-bottom:1px solid var(--border);margin-bottom:8px;}
+  #search{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-size:15px;background:#fff;}
+  #search:focus{outline:none;border-color:var(--accent);}
+  .count{color:var(--muted);font-size:12px;margin-top:6px;}
+  .cat{margin:18px 0 8px;font-size:15px;font-weight:700;color:var(--accent);
+    border-bottom:2px solid var(--border);padding-bottom:4px;}
+  .entry{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin-bottom:8px;
+    box-shadow:0 1px 2px rgba(0,0,0,.04);}
+  .term{font-weight:700;font-size:14.5px;}
+  .def{color:#333;font-size:13.5px;margin-top:2px;}
+  mark{background:#fde68a;padding:0 1px;border-radius:2px;}
+  .empty{color:var(--muted);text-align:center;padding:30px;font-size:14px;}
+  .hidden{display:none!important;}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Term Glossary</h1>
+    <div class="subtitle">Every muscle &amp; structure in the project, with a quick definition</div>
+    <a class="back" href="index.html">← Back to the Pin Quiz</a>
+  </header>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search a term or definition… (e.g. abducts, scapula, oblique)" autocomplete="off" />
+    <div class="count" id="count"></div>
+  </div>
+  <div id="list"></div>
+  <div id="empty" class="empty hidden">No terms match your search.</div>
+</div>
+
+<script src="glossary.js"></script>
+<script>
+const G = window.GLOSSARY;
+const listEl = document.getElementById('list');
+const countEl = document.getElementById('count');
+const emptyEl = document.getElementById('empty');
+
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function hl(s,q){ if(!q) return esc(s);
+  const i=s.toLowerCase().indexOf(q); if(i<0) return esc(s);
+  return esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+q.length))+'</mark>'+esc(s.slice(i+q.length)); }
+
+// group terms by category, alphabetised within each
+const byCat = {};
+G.categories.forEach(c=>byCat[c]=[]);
+G.terms.forEach(t=>{ (byCat[t.c]=byCat[t.c]||[]).push(t); });
+Object.values(byCat).forEach(arr=>arr.sort((a,b)=>a.t.localeCompare(b.t)));
+
+function render(q){
+  q=(q||'').trim().toLowerCase();
+  listEl.innerHTML=''; let shown=0;
+  G.categories.forEach(cat=>{
+    const matches=byCat[cat].filter(t=>!q || t.t.toLowerCase().includes(q) || t.d.toLowerCase().includes(q));
+    if(!matches.length) return;
+    const h=document.createElement('div'); h.className='cat'; h.textContent=cat+' ('+matches.length+')'; listEl.appendChild(h);
+    matches.forEach(t=>{
+      shown++;
+      const e=document.createElement('div'); e.className='entry';
+      e.innerHTML='<div class="term">'+hl(t.t,q)+'</div><div class="def">'+hl(t.d,q)+'</div>';
+      listEl.appendChild(e);
+    });
+  });
+  const total=G.terms.length;
+  countEl.textContent = q ? (shown+' of '+total+' terms') : (total+' terms');
+  emptyEl.classList.toggle('hidden', shown>0);
+}
+
+document.getElementById('search').addEventListener('input',e=>render(e.target.value));
+render('');
+</script>
+</body>
+</html>
