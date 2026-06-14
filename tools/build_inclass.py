@@ -49,10 +49,12 @@ for st,(fn,(x0,y0,x1,y1)) in CROP.items():
     print(st, out, f"{w}x{h}")
 
 def q(st, tag, prompt, answer, pool):
+    # `options` = the exact a-e choices printed on the paper card (rendered as-is);
+    # `id` = stable key so user-chosen answers/pins survive answer edits.
     fn,w,h = saved[st]
-    return {"image":"images/"+fn,"width_px":w,"height_px":h,
+    return {"id":"ic_"+tag.lower(),"image":"images/"+fn,"width_px":w,"height_px":h,
             "bbox_px":pinpx[(st,tag)],"answer":answer,"prompt":prompt,
-            "view_label_pool":pool}
+            "options":pool,"view_label_pool":pool}
 
 WHATM = "What is this muscle?"
 WHATM2 = "What muscle is this?"
@@ -82,12 +84,10 @@ questions = [
    ["Iliacus","Psoas major","Diaphragm","Rhomboid major","Rhomboid minor"]),
  q("s5","Q17","Station 5 · What is this muscle's PRIMARY ACTION?", "Extends, adducts and medially rotates arm",
    ["Flexes vertebral column, compresses abdomen","Protracts and depresses scapula",
-    "Extends, adducts and medially rotates arm","Flexes neck, rotates head to the opposite side",
-    "Abducts the arm at the shoulder","Flexes the forearm at the elbow"]),
+    "Extends, adducts and medially rotates arm","Flexes neck, rotates head to the opposite side"]),
  q("s5","Q18","Station 5 · What is this muscle's INSERTION?", "Intertubercular sulcus of the humerus",
    ["Intertubercular sulcus of the humerus","Coracoid process of the scapula",
-    "Spinous process of the lower vertebrae, iliac crest","Ribs 3 - 5",
-    "Deltoid tuberosity of the humerus","Greater tubercle of the humerus"]),
+    "Spinous process of the lower vertebrae, iliac crest","Ribs 3 - 5"]),
  q("s6","Q19","Station 6 · "+WHATN, "Tendinous Intersections",
    ["Linea Alba","Anterior Rectus Sheath","Tendinous Intersections","Galea aponeurotica"]),
  q("s6","Q20","Station 6 · "+WHATN, "Iliotibial (IT) Band",

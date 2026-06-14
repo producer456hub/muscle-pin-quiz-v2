@@ -133,6 +133,7 @@
       <button id="next-btn" disabled>Next →</button>
       <button id="skip-btn" class="secondary">Skip / Show answer</button>
       <button id="q-fix-btn" class="warn">✎ Fix pin</button>
+      <button id="q-setans-btn" class="warn hidden">✓ Set answer</button>
     </div>
     <div class="kbd-hint">Keys: 1–6 choose · Enter next · S skip</div>
   </section>
@@ -175,6 +176,10 @@ const DATA = window.MUSCLE_DATA;
 const CORR_KEY = 'musclePinCorrections_v2'; // bumped: all images re-sourced 2026-06, old v1 corrections are for retired images
 let CORR = {};
 try { CORR = JSON.parse(localStorage.getItem(CORR_KEY) || '{}'); } catch(e){ CORR = {}; }
+const ANS_KEY = 'musclePinAnswers_v2'; // user-chosen correct answers (In-Class bank)
+let ANS = {};
+try { ANS = JSON.parse(localStorage.getItem(ANS_KEY) || '{}'); } catch(e){ ANS = {}; }
+let ansEditing = false;
 const PIN_KEY = 'musclePinSize_v1';
 let PIN_SIZE = parseFloat(localStorage.getItem(PIN_KEY)) || 0.03;
 const ZOOM_KEY = 'musclePinZoom_v1';
@@ -183,8 +188,11 @@ let GLOBAL_LABELS = [];
 let state = null;
 let editing = false;
 
-function qKey(q){ return q.image + '|' + q.answer; }
+// stable key: In-Class questions carry an id (so the key survives answer edits);
+// other banks fall back to image+answer (unchanged behavior).
+function qKey(q){ return q.id ? ('id:'+q.id) : (q.image + '|' + q.answer); }
 function bboxOf(q){ return CORR[qKey(q)] || q.bbox_px; }
+function answerOf(q){ return ANS[qKey(q)] || q.answer; }
 
 function initLabels(){
   const set = new Set();
@@ -227,7 +235,7 @@ function buildQuestions(){
 }
 function updatePoolSize(){ document.getElementById('pool-size').textContent = `(${buildQuestions().length} questions in pool)`; }
 function refreshCorrBar(){
-  const n = Object.keys(CORR).length;
+  const n = new Set([...Object.keys(CORR), ...Object.keys(ANS)]).size;
   const bar = document.getElementById('corr-bar');
   document.getElementById('corr-count').textContent = n;
   bar.classList.toggle('hidden', n===0);
@@ -286,15 +294,24 @@ function renderQuiz(){
   document.getElementById('q-img').src=q.image;
   document.getElementById('q-question-text').textContent = q.prompt || 'What muscle / structure is pinned?';
   setMarker(document.getElementById('q-svg'),q);
-  // options: answer + 5 distractors (same-region pool first, then global)
-  let pool=(q.view_label_pool||[]).filter(t=>t!==q.answer);
-  let distr=pickN(pool,5);
-  if(distr.length<5){ const extra=GLOBAL_LABELS.filter(t=>t!==q.answer && !distr.includes(t)); distr=distr.concat(pickN(extra,5-distr.length)); }
-  const options=shuffle([q.answer,...distr]);
+  const correct = answerOf(q);
+  let options;
+  if(q.options && q.options.length){
+    // fixed options exactly as printed on the paper card (In-Class bank)
+    options = q.options.slice();
+  } else {
+    // legacy: correct answer + 5 distractors (same-region pool first, then global)
+    let pool=(q.view_label_pool||[]).filter(t=>t!==correct);
+    let distr=pickN(pool,5);
+    if(distr.length<5){ const extra=GLOBAL_LABELS.filter(t=>t!==correct && !distr.includes(t)); distr=distr.concat(pickN(extra,5-distr.length)); }
+    options=shuffle([correct,...distr]);
+  }
   const wrap=document.getElementById('q-options'); wrap.innerHTML='';
   options.forEach((opt,i)=>{ const b=document.createElement('button'); b.className='option'; b.dataset.text=opt;
     b.innerHTML=`<span class="key">${i+1}</span><span>${esc(opt)}</span>`;
-    b.addEventListener('click',()=>chooseOption(b,opt,q.answer)); wrap.appendChild(b); });
+    b.addEventListener('click',()=>{ if(ansEditing) setCorrectAnswer(q,opt); else chooseOption(b,opt,answerOf(q)); }); wrap.appendChild(b); });
+  // show the "Set answer" control only for editable (In-Class) questions
+  document.getElementById('q-setans-btn').classList.toggle('hidden', !q.id);
   const fb=document.getElementById('q-feedback'); fb.className='feedback hidden'; fb.textContent='';
   state.answered=false; document.getElementById('next-btn').disabled=true;
 }
@@ -308,11 +325,34 @@ function chooseOption(btn,chosen,correct){
   document.getElementById('q-score').textContent=state.score;
   document.getElementById('next-btn').disabled=false;
 }
-function skipQuestion(){ if(state.answered||editing) return; const q=state.questions[state.idx]; state.answered=true;
-  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true; if(o.dataset.text===q.answer) o.classList.add('correct'); });
-  const fb=document.getElementById('q-feedback'); fb.className='feedback wrong'; fb.textContent=`Answer: ${q.answer}`;
+function skipQuestion(){ if(state.answered||editing||ansEditing) return; const q=state.questions[state.idx]; const correct=answerOf(q); state.answered=true;
+  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true; if(o.dataset.text===correct) o.classList.add('correct'); });
+  const fb=document.getElementById('q-feedback'); fb.className='feedback wrong'; fb.textContent=`Answer: ${correct}`;
   document.getElementById('next-btn').disabled=false; }
-function nextQuestion(){ if(editing) return; state.idx++; if(state.idx>=state.questions.length) showComplete(); else renderQuiz(); }
+function nextQuestion(){ if(editing||ansEditing) return; state.idx++; if(state.idx>=state.questions.length) showComplete(); else renderQuiz(); }
+
+/* ---------- ANSWER EDIT MODE (In-Class bank) ---------- */
+function markAnsEdit(q){ const cur=answerOf(q);
+  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=false; o.classList.remove('wrong');
+    o.classList.toggle('correct', o.dataset.text===cur); }); }
+function enterAnsEdit(){
+  if(!state||state.mode!=='quiz') return; exitEdit();
+  const q=curQ(); if(!q.id) return; ansEditing=true; state.answered=false;
+  document.getElementById('next-btn').disabled=true;
+  const fb=document.getElementById('q-feedback'); fb.className='feedback hidden'; fb.textContent='';
+  const banner=document.getElementById('q-edit-banner'); banner.classList.remove('hidden');
+  banner.innerHTML=`<span><b>Set correct answer</b> — tap the right option. Current: <b>${esc(answerOf(q))}</b></span>`+
+    `<button class="secondary" onclick="exitAnsEdit()">Done</button>`;
+  markAnsEdit(q);
+}
+function setCorrectAnswer(q,opt){
+  ANS[qKey(q)]=opt; localStorage.setItem(ANS_KEY,JSON.stringify(ANS));
+  markAnsEdit(q); refreshCorrBar();
+  const banner=document.getElementById('q-edit-banner');
+  if(banner) banner.querySelector('span').innerHTML=`<b>Answer set ✓</b> — correct is now <b>${esc(opt)}</b>. Tap another to change, or Done.`;
+}
+function exitAnsEdit(){ ansEditing=false; document.getElementById('q-edit-banner').classList.add('hidden');
+  if(state&&state.mode==='quiz') renderQuiz(); }
 
 /* ---------- FLASHCARDS ---------- */
 function renderFlash(){ exitEdit(); const q=state.questions[state.idx];
@@ -320,24 +360,24 @@ function renderFlash(){ exitEdit(); const q=state.questions[state.idx];
   document.getElementById('f-progress').style.width=(100*(state.idx+1)/state.questions.length)+'%';
   document.getElementById('f-img').src=q.image; setMarker(document.getElementById('f-svg'),q);
   document.getElementById('f-hint').textContent = (q.prompt ? q.prompt+' — ' : '') + 'Click the card (or Space) to flip';
-  document.getElementById('flash-back').textContent=q.answer;
+  document.getElementById('flash-back').textContent=answerOf(q);
   document.getElementById('flash-inner').classList.remove('flipped'); }
 function flipFlash(){ if(editing) return; document.getElementById('flash-inner').classList.toggle('flipped'); }
 
 /* ---------- PIN EDIT MODE ---------- */
 function curQ(){ return state.questions[state.idx]; }
 function enterEdit(){
-  editing=true; const q=curQ(); const isQuiz=state.mode==='quiz';
+  ansEditing=false; editing=true; const q=curQ(); const isQuiz=state.mode==='quiz';
   const wrap=document.getElementById(isQuiz?'q-imgwrap':'f-imgwrap');
   const banner=document.getElementById(isQuiz?'q-edit-banner':'f-edit-banner');
   wrap.classList.add('editing');
   banner.classList.remove('hidden');
-  banner.innerHTML=`<span><b>Fixing pin for:</b> ${esc(q.answer)} — click the correct spot on the image.</span>`+
+  banner.innerHTML=`<span><b>Fixing pin for:</b> ${esc(answerOf(q))} — click the correct spot on the image.</span>`+
     `<button class="secondary" onclick="exitEdit()">Done</button>`;
   wrap.onclick=(e)=>placePin(e,wrap,q,isQuiz);
 }
 function exitEdit(){
-  editing=false;
+  editing=false; ansEditing=false;
   ['q-imgwrap','f-imgwrap'].forEach(id=>{ const w=document.getElementById(id); w.classList.remove('editing'); w.onclick=null; });
   ['q-edit-banner','f-edit-banner'].forEach(id=>document.getElementById(id).classList.add('hidden'));
 }
@@ -350,16 +390,21 @@ function placePin(e,wrap,q,isQuiz){
   CORR[qKey(q)]=nb; localStorage.setItem(CORR_KEY,JSON.stringify(CORR));
   setMarker(document.getElementById(isQuiz?'q-svg':'f-svg'),q);
   const banner=document.getElementById(isQuiz?'q-edit-banner':'f-edit-banner');
-  banner.querySelector('span').innerHTML=`<b>Pin moved ✓</b> for ${esc(q.answer)}. Click again to nudge, or Done.`;
+  banner.querySelector('span').innerHTML=`<b>Pin moved ✓</b> for ${esc(answerOf(q))}. Click again to nudge, or Done.`;
 }
 
 /* ---------- PUBLISH ---------- */
 function publish(){
   const out=JSON.parse(JSON.stringify(DATA));
-  out.sections.forEach(s=>s.questions.forEach(q=>{ const k=q.image+'|'+q.answer; if(CORR[k]) q.bbox_px=CORR[k]; }));
+  out.sections.forEach(s=>s.questions.forEach(q=>{
+    const k = q.id ? ('id:'+q.id) : (q.image+'|'+q.answer);
+    if(CORR[k]) q.bbox_px=CORR[k];
+    if(ANS[k])  q.answer=ANS[k];
+  }));
   const blob=new Blob(['window.MUSCLE_DATA = '+JSON.stringify(out,null,1)+';\n'],{type:'text/javascript'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='dataset.js'; a.click();
-  alert('Downloaded dataset.js with your '+Object.keys(CORR).length+' correction(s) baked in.\n\nReplace dataset.js in your repo and commit to make them permanent.');
+  const n=new Set([...Object.keys(CORR),...Object.keys(ANS)]).size;
+  alert('Downloaded dataset.js with your '+n+' correction(s) baked in ('+Object.keys(ANS).length+' answer, '+Object.keys(CORR).length+' pin).\n\nReplace dataset.js in your repo and commit to make them permanent.');
 }
 
 function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -373,6 +418,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('next-btn').addEventListener('click',nextQuestion);
   document.getElementById('skip-btn').addEventListener('click',skipQuestion);
   document.getElementById('q-fix-btn').addEventListener('click',()=>editing?exitEdit():enterEdit());
+  document.getElementById('q-setans-btn').addEventListener('click',()=>ansEditing?exitAnsEdit():enterAnsEdit());
   document.getElementById('publish-btn').addEventListener('click',publish);
   document.getElementById('q-pinsize').value=PIN_SIZE;
   document.getElementById('f-pinsize').value=PIN_SIZE;
@@ -390,6 +436,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.addEventListener('keydown',e=>{
     if(!state||editing) return;
     if(state.mode==='quiz'){
+      if(ansEditing){ if(/^[1-6]$/.test(e.key)){ const o=document.querySelectorAll('#q-options .option')[+e.key-1]; if(o)o.click(); } return; }
       if(!state.answered && /^[1-6]$/.test(e.key)){ const o=document.querySelectorAll('#q-options .option')[+e.key-1]; if(o)o.click(); }
       else if(e.key==='Enter' && !document.getElementById('next-btn').disabled) nextQuestion();
       else if(e.key.toLowerCase()==='s' && !state.answered) skipQuestion();

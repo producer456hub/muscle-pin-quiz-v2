@@ -4225,6 +4225,7 @@ window.MUSCLE_DATA = {
    "excludeFromGlobal": true,
    "questions": [
     {
+     "id": "ic_q7",
      "image": "images/inclass_s2.jpg",
      "width_px": 520,
      "height_px": 780,
@@ -4236,6 +4237,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "External intercostal",
      "prompt": "Station 2 · What is this muscle?",
+     "options": [
+      "Pectoralis major",
+      "Pectoralis minor",
+      "Innermost intercostal",
+      "External intercostal",
+      "Internal intercostal"
+     ],
      "view_label_pool": [
       "Pectoralis major",
       "Pectoralis minor",
@@ -4245,6 +4253,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q8",
      "image": "images/inclass_s2.jpg",
      "width_px": 520,
      "height_px": 780,
@@ -4256,6 +4265,12 @@ window.MUSCLE_DATA = {
      ],
      "answer": "External oblique",
      "prompt": "Station 2 · What is this muscle?",
+     "options": [
+      "External oblique",
+      "Internal oblique",
+      "Transverse abdominis",
+      "Rectus abdominis"
+     ],
      "view_label_pool": [
       "External oblique",
       "Internal oblique",
@@ -4264,6 +4279,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q9",
      "image": "images/inclass_s3.jpg",
      "width_px": 700,
      "height_px": 880,
@@ -4275,6 +4291,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Orbicularis oculi",
      "prompt": "Station 3 · What muscle is this?",
+     "options": [
+      "Orbicularis oculi",
+      "Orbicularis oris",
+      "Temporalis",
+      "Buccinator",
+      "Masseter"
+     ],
      "view_label_pool": [
       "Orbicularis oculi",
       "Orbicularis oris",
@@ -4284,6 +4307,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q10",
      "image": "images/inclass_s3.jpg",
      "width_px": 700,
      "height_px": 880,
@@ -4295,6 +4319,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Zygomaticus major",
      "prompt": "Station 3 · What muscle is this?",
+     "options": [
+      "Zygomaticus major",
+      "Mentalis",
+      "Risorius",
+      "Zygomaticus minor",
+      "Depressor anguli oris"
+     ],
      "view_label_pool": [
       "Zygomaticus major",
       "Mentalis",
@@ -4304,6 +4335,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q11",
      "image": "images/inclass_s4.jpg",
      "width_px": 1200,
      "height_px": 390,
@@ -4315,6 +4347,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Biceps brachii (long head)",
      "prompt": "Station 4 · What is this muscle?",
+     "options": [
+      "Coracobrachialis",
+      "Biceps brachii (long head)",
+      "Biceps brachii (short head)",
+      "Supraspinatus",
+      "Subscapularis"
+     ],
      "view_label_pool": [
       "Coracobrachialis",
       "Biceps brachii (long head)",
@@ -4324,6 +4363,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q12",
      "image": "images/inclass_s4.jpg",
      "width_px": 1200,
      "height_px": 390,
@@ -4335,6 +4375,12 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Flexor digitorum superficialis",
      "prompt": "Station 4 · What is this muscle?",
+     "options": [
+      "Flexor carpi ulnaris",
+      "Flexor digitorum superficialis",
+      "Flexor digitorum profundus",
+      "Abductor pollicis longus"
+     ],
      "view_label_pool": [
       "Flexor carpi ulnaris",
       "Flexor digitorum superficialis",
@@ -4343,6 +4389,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q13",
      "image": "images/inclass_s4.jpg",
      "width_px": 1200,
      "height_px": 390,
@@ -4354,6 +4401,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Extensor digitorum",
      "prompt": "Station 4 · What muscle is this?",
+     "options": [
+      "Supinator",
+      "Extensor digiti minimi",
+      "Extensor carpi radialis longus",
+      "Extensor carpi radialis brevis",
+      "Extensor digitorum"
+     ],
      "view_label_pool": [
       "Supinator",
       "Extensor digiti minimi",
@@ -4363,6 +4417,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q14",
      "image": "images/inclass_s4.jpg",
      "width_px": 1200,
      "height_px": 390,
@@ -4374,6 +4429,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Brachioradialis",
      "prompt": "Station 4 · What muscle is this?",
+     "options": [
+      "Pronator teres",
+      "Brachioradialis",
+      "Anconeus",
+      "Teres major",
+      "Teres minor"
+     ],
      "view_label_pool": [
       "Pronator teres",
       "Brachioradialis",
@@ -4383,6 +4445,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q15",
      "image": "images/inclass_s5.jpg",
      "width_px": 480,
      "height_px": 1380,
@@ -4394,6 +4457,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Latissimus dorsi",
      "prompt": "Station 5 · What muscle is this?",
+     "options": [
+      "Latissimus dorsi",
+      "Rectus abdominis",
+      "Deltoid",
+      "Sternocleidomastoid",
+      "Serratus anterior"
+     ],
      "view_label_pool": [
       "Latissimus dorsi",
       "Rectus abdominis",
@@ -4403,6 +4473,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q16",
      "image": "images/inclass_s5.jpg",
      "width_px": 480,
      "height_px": 1380,
@@ -4414,6 +4485,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Rhomboid major",
      "prompt": "Station 5 · What muscle is this?",
+     "options": [
+      "Iliacus",
+      "Psoas major",
+      "Diaphragm",
+      "Rhomboid major",
+      "Rhomboid minor"
+     ],
      "view_label_pool": [
       "Iliacus",
       "Psoas major",
@@ -4423,6 +4501,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q17",
      "image": "images/inclass_s5.jpg",
      "width_px": 480,
      "height_px": 1380,
@@ -4434,16 +4513,21 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Extends, adducts and medially rotates arm",
      "prompt": "Station 5 · What is this muscle's PRIMARY ACTION?",
+     "options": [
+      "Flexes vertebral column, compresses abdomen",
+      "Protracts and depresses scapula",
+      "Extends, adducts and medially rotates arm",
+      "Flexes neck, rotates head to the opposite side"
+     ],
      "view_label_pool": [
       "Flexes vertebral column, compresses abdomen",
       "Protracts and depresses scapula",
       "Extends, adducts and medially rotates arm",
-      "Flexes neck, rotates head to the opposite side",
-      "Abducts the arm at the shoulder",
-      "Flexes the forearm at the elbow"
+      "Flexes neck, rotates head to the opposite side"
      ]
     },
     {
+     "id": "ic_q18",
      "image": "images/inclass_s5.jpg",
      "width_px": 480,
      "height_px": 1380,
@@ -4455,16 +4539,21 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Intertubercular sulcus of the humerus",
      "prompt": "Station 5 · What is this muscle's INSERTION?",
+     "options": [
+      "Intertubercular sulcus of the humerus",
+      "Coracoid process of the scapula",
+      "Spinous process of the lower vertebrae, iliac crest",
+      "Ribs 3 - 5"
+     ],
      "view_label_pool": [
       "Intertubercular sulcus of the humerus",
       "Coracoid process of the scapula",
       "Spinous process of the lower vertebrae, iliac crest",
-      "Ribs 3 - 5",
-      "Deltoid tuberosity of the humerus",
-      "Greater tubercle of the humerus"
+      "Ribs 3 - 5"
      ]
     },
     {
+     "id": "ic_q19",
      "image": "images/inclass_s6.jpg",
      "width_px": 620,
      "height_px": 1340,
@@ -4476,6 +4565,12 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Tendinous Intersections",
      "prompt": "Station 6 · What non-muscular structure is this?",
+     "options": [
+      "Linea Alba",
+      "Anterior Rectus Sheath",
+      "Tendinous Intersections",
+      "Galea aponeurotica"
+     ],
      "view_label_pool": [
       "Linea Alba",
       "Anterior Rectus Sheath",
@@ -4484,6 +4579,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q20",
      "image": "images/inclass_s6.jpg",
      "width_px": 620,
      "height_px": 1340,
@@ -4495,6 +4591,13 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Iliotibial (IT) Band",
      "prompt": "Station 6 · What non-muscular structure is this?",
+     "options": [
+      "Patellar ligament",
+      "Sciatic nerve",
+      "Calcaneal tendon",
+      "Iliotibial (IT) Band",
+      "Quadriceps tendon"
+     ],
      "view_label_pool": [
       "Patellar ligament",
       "Sciatic nerve",
@@ -4504,6 +4607,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q21",
      "image": "images/inclass_s7.jpg",
      "width_px": 1100,
      "height_px": 940,
@@ -4515,6 +4619,12 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Myofibrils",
      "prompt": "Station 7 · What is this structure?",
+     "options": [
+      "Myofibrils",
+      "Muscle fiber",
+      "Endoplasmic reticulum",
+      "T-Tubules"
+     ],
      "view_label_pool": [
       "Myofibrils",
       "Muscle fiber",
@@ -4523,6 +4633,7 @@ window.MUSCLE_DATA = {
      ]
     },
     {
+     "id": "ic_q22",
      "image": "images/inclass_s7.jpg",
      "width_px": 1100,
      "height_px": 940,
@@ -4534,6 +4645,12 @@ window.MUSCLE_DATA = {
      ],
      "answer": "Sarcolemma",
      "prompt": "Station 7 · What is this structure?",
+     "options": [
+      "Sarcomere",
+      "Sarcolemma",
+      "Nucleus",
+      "Sarcoplasm"
+     ],
      "view_label_pool": [
       "Sarcomere",
       "Sarcolemma",
