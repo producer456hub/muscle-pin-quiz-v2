@@ -28,14 +28,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/inclass_s7.jpg",
-     "width_px": 1100,
-     "height_px": 940,
+     "image": "images/tissue_blank.png",
+     "width_px": 801,
+     "height_px": 642,
      "bbox_px": [
-      646,
-      366,
-      694,
-      414
+      129,
+      151,
+      159,
+      181
      ],
      "answer": "Nucleus",
      "view_label_pool": [
@@ -74,14 +74,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/inclass_s7.jpg",
-     "width_px": 1100,
-     "height_px": 940,
+     "image": "images/tissue_blank.png",
+     "width_px": 801,
+     "height_px": 642,
      "bbox_px": [
-      640,
-      196,
-      688,
-      244
+      190,
+      33,
+      220,
+      63
      ],
      "answer": "Sarcolemma",
      "view_label_pool": [
@@ -97,14 +97,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/inclass_s7.jpg",
-     "width_px": 1100,
-     "height_px": 940,
+     "image": "images/tissue_blank.png",
+     "width_px": 801,
+     "height_px": 642,
      "bbox_px": [
-      236,
-      129,
-      284,
-      177
+      321,
+      154,
+      351,
+      184
      ],
      "answer": "Myofibrils",
      "view_label_pool": [
@@ -255,14 +255,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/inclass_s3.jpg",
-     "width_px": 700,
-     "height_px": 880,
+     "image": "images/facial_anterior_blank.png",
+     "width_px": 658,
+     "height_px": 1090,
      "bbox_px": [
-      443,
-      350,
-      479,
-      386
+      609,
+      492,
+      639,
+      522
      ],
      "answer": "Orbicularis oculi",
      "view_label_pool": [
@@ -1038,14 +1038,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/inclass_s2.jpg",
-     "width_px": 520,
-     "height_px": 780,
+     "image": "images/abdomen_wall.png",
+     "width_px": 936,
+     "height_px": 608,
      "bbox_px": [
-      348,
-      407,
-      374,
-      433
+      317,
+      200,
+      353,
+      236
      ],
      "answer": "External oblique",
      "view_label_pool": [

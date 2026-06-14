@@ -101,9 +101,12 @@ questions = [
 section = {"id":"inclass","title":"In-Class Prep Quiz","updated":True,
            "excludeFromGlobal":True,"questions":questions}
 
-# ---- load dataset.js, apply swaps, append section ----
-ds = os.path.join(ROOT,"dataset.js")
-txt = open(ds, encoding="utf-8").read()
+# ---- load ORIGINAL dataset (pre-inclass backup), append section ----
+# Read from the clean backup so existing banks keep their original images/labels;
+# we only add the new bank (no swaps into existing banks).
+ds  = os.path.join(ROOT,"dataset.js")
+src = os.path.join(ROOT,"images/_backups/dataset.before_inclass.js")
+txt = open(src, encoding="utf-8").read()
 i,j = txt.index("{"), txt.rindex("}")+1
 data = json.loads(txt[i:j])
 
@@ -114,14 +117,8 @@ def find(secid, answer):
                 if qq["answer"]==answer: return qq
     return None
 
-# high-confidence real-model swaps into existing banks
-SWAPS = [
- ("trunk","External oblique","s2","Q8"),
- ("facial","Orbicularis oculi","s3","Q9"),
- ("tissue","Myofibrils","s7","Q21"),
- ("tissue","Sarcolemma","s7","Q22"),
- ("tissue","Nucleus","s7","NUC"),
-]
+# No swaps into existing banks — these photos live only in the new bank.
+SWAPS = []
 for secid,ans,st,tag in SWAPS:
     qq = find(secid,ans)
     fn,w,h = saved[st]
