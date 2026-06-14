@@ -188,7 +188,8 @@ window.MUSCLE_DATA = {
       "T-Tubules"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "facial",
@@ -764,7 +765,8 @@ window.MUSCLE_DATA = {
       "Zygomaticus minor"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "eye",
@@ -1037,14 +1039,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/abdomen_superficial.png",
-     "width_px": 960,
-     "height_px": 720,
+     "image": "images/abdomen_wall.png",
+     "width_px": 936,
+     "height_px": 608,
      "bbox_px": [
-      482,
-      452,
-      518,
-      488
+      317,
+      200,
+      353,
+      236
      ],
      "answer": "External oblique",
      "view_label_pool": [
@@ -1068,14 +1070,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/abdomen_internal_oblique.png",
-     "width_px": 960,
-     "height_px": 720,
+     "image": "images/abdomen_wall.png",
+     "width_px": 936,
+     "height_px": 608,
      "bbox_px": [
-      157,
-      462,
-      193,
-      498
+      693,
+      263,
+      729,
+      299
      ],
      "answer": "Internal oblique",
      "view_label_pool": [
@@ -1223,14 +1225,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/abdomen_rectus_sheath.png",
-     "width_px": 960,
-     "height_px": 720,
+     "image": "images/abdomen_wall.png",
+     "width_px": 936,
+     "height_px": 608,
      "bbox_px": [
-      212,
-      412,
-      248,
-      448
+      192,
+      312,
+      228,
+      348
      ],
      "answer": "Anterior rectus sheath",
      "view_label_pool": [
@@ -1377,7 +1379,8 @@ window.MUSCLE_DATA = {
       "Transverse abdominis"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "shoulder",
@@ -2918,7 +2921,8 @@ window.MUSCLE_DATA = {
       "Vastus medialis"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "leg",
