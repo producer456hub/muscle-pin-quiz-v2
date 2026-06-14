@@ -9,10 +9,10 @@ window.MUSCLE_DATA = {
      "width_px": 801,
      "height_px": 642,
      "bbox_px": [
-      155,
-      85,
-      185,
-      115
+      387,
+      340,
+      417,
+      370
      ],
      "answer": "Skeletal Muscle Fiber",
      "view_label_pool": [
@@ -32,10 +32,10 @@ window.MUSCLE_DATA = {
      "width_px": 801,
      "height_px": 642,
      "bbox_px": [
-      125,
-      143,
-      155,
-      173
+      129,
+      151,
+      159,
+      181
      ],
      "answer": "Nucleus",
      "view_label_pool": [
@@ -55,10 +55,10 @@ window.MUSCLE_DATA = {
      "width_px": 801,
      "height_px": 642,
      "bbox_px": [
-      250,
-      55,
-      280,
-      85
+      327,
+      118,
+      357,
+      148
      ],
      "answer": "Mitochondria",
      "view_label_pool": [
@@ -101,10 +101,10 @@ window.MUSCLE_DATA = {
      "width_px": 801,
      "height_px": 642,
      "bbox_px": [
-      265,
-      440,
-      295,
-      470
+      321,
+      154,
+      351,
+      184
      ],
      "answer": "Myofibrils",
      "view_label_pool": [
@@ -124,10 +124,10 @@ window.MUSCLE_DATA = {
      "width_px": 801,
      "height_px": 642,
      "bbox_px": [
-      210,
-      497,
-      240,
-      527
+      326,
+      233,
+      356,
+      263
      ],
      "answer": "Sarcoplasm",
      "view_label_pool": [
@@ -199,10 +199,10 @@ window.MUSCLE_DATA = {
      "width_px": 658,
      "height_px": 1090,
      "bbox_px": [
-      315,
-      57,
-      345,
-      87
+      220,
+      233,
+      250,
+      263
      ],
      "answer": "Galea aponeurotica",
      "view_label_pool": [
@@ -229,10 +229,10 @@ window.MUSCLE_DATA = {
      "width_px": 658,
      "height_px": 1090,
      "bbox_px": [
-      410,
-      250,
-      440,
-      280
+      317,
+      312,
+      347,
+      342
      ],
      "answer": "Frontalis",
      "view_label_pool": [
@@ -259,10 +259,10 @@ window.MUSCLE_DATA = {
      "width_px": 658,
      "height_px": 1090,
      "bbox_px": [
-      533,
-      465,
-      563,
-      495
+      609,
+      492,
+      639,
+      522
      ],
      "answer": "Orbicularis oculi",
      "view_label_pool": [
@@ -379,10 +379,10 @@ window.MUSCLE_DATA = {
      "width_px": 658,
      "height_px": 1090,
      "bbox_px": [
-      345,
-      880,
-      375,
-      910
+      386,
+      878,
+      416,
+      908
      ],
      "answer": "Orbicularis oris",
      "view_label_pool": [
@@ -589,10 +589,10 @@ window.MUSCLE_DATA = {
      "width_px": 1205,
      "height_px": 1424,
      "bbox_px": [
-      960,
-      605,
-      990,
-      635
+      1037,
+      478,
+      1067,
+      508
      ],
      "answer": "Occipitalis",
      "view_label_pool": [
@@ -649,9 +649,9 @@ window.MUSCLE_DATA = {
      "width_px": 1205,
      "height_px": 1424,
      "bbox_px": [
-      150,
+      234,
       455,
-      180,
+      264,
       485
      ],
      "answer": "Orbicularis oculi",
@@ -739,10 +739,10 @@ window.MUSCLE_DATA = {
      "width_px": 330,
      "height_px": 330,
      "bbox_px": [
-      149,
-      171,
-      179,
-      201
+      128,
+      139,
+      158,
+      169
      ],
      "answer": "Trapezius",
      "view_label_pool": [
@@ -776,10 +776,10 @@ window.MUSCLE_DATA = {
      "width_px": 585,
      "height_px": 730,
      "bbox_px": [
-      240,
-      150,
-      270,
-      180
+      295,
+      17,
+      325,
+      47
      ],
      "answer": "Superior Rectus",
      "view_label_pool": [
@@ -796,10 +796,10 @@ window.MUSCLE_DATA = {
      "width_px": 585,
      "height_px": 730,
      "bbox_px": [
-      235,
-      495,
-      265,
-      525
+      343,
+      592,
+      373,
+      622
      ],
      "answer": "Inferior Rectus",
      "view_label_pool": [
@@ -836,10 +836,10 @@ window.MUSCLE_DATA = {
      "width_px": 585,
      "height_px": 730,
      "bbox_px": [
-      455,
-      345,
-      485,
-      375
+      538,
+      349,
+      568,
+      379
      ],
      "answer": "Medial Rectus",
      "view_label_pool": [
@@ -876,10 +876,10 @@ window.MUSCLE_DATA = {
      "width_px": 585,
      "height_px": 730,
      "bbox_px": [
-      315,
-      645,
-      345,
-      675
+      397,
+      636,
+      427,
+      666
      ],
      "answer": "Inferior Oblique",
      "view_label_pool": [
@@ -922,10 +922,10 @@ window.MUSCLE_DATA = {
      "width_px": 330,
      "height_px": 330,
      "bbox_px": [
-      149,
-      171,
-      179,
-      201
+      128,
+      139,
+      158,
+      169
      ],
      "answer": "Trapezius",
      "view_label_pool": [
@@ -1166,10 +1166,10 @@ window.MUSCLE_DATA = {
      "width_px": 771,
      "height_px": 943,
      "bbox_px": [
-      374,
-      272,
-      410,
-      308
+      426,
+      287,
+      462,
+      323
      ],
      "answer": "Linea alba",
      "view_label_pool": [
@@ -1259,10 +1259,10 @@ window.MUSCLE_DATA = {
      "width_px": 1100,
      "height_px": 978,
      "bbox_px": [
-      921,
-      540,
-      951,
-      570
+      273,
+      149,
+      303,
+      179
      ],
      "answer": "Diaphragm",
      "view_label_pool": [
@@ -1290,10 +1290,10 @@ window.MUSCLE_DATA = {
      "width_px": 1100,
      "height_px": 978,
      "bbox_px": [
-      512,
-      243,
-      542,
-      273
+      728,
+      286,
+      758,
+      316
      ],
      "answer": "Central tendon",
      "view_label_pool": [
@@ -1321,10 +1321,10 @@ window.MUSCLE_DATA = {
      "width_px": 868,
      "height_px": 560,
      "bbox_px": [
-      135,
-      190,
-      165,
-      220
+      336,
+      179,
+      366,
+      209
      ],
      "answer": "External intercostals",
      "view_label_pool": [
@@ -1352,10 +1352,10 @@ window.MUSCLE_DATA = {
      "width_px": 868,
      "height_px": 560,
      "bbox_px": [
-      650,
-      315,
-      680,
-      345
+      299,
+      289,
+      329,
+      319
      ],
      "answer": "Internal intercostals",
      "view_label_pool": [
@@ -1390,10 +1390,10 @@ window.MUSCLE_DATA = {
      "width_px": 330,
      "height_px": 330,
      "bbox_px": [
-      149,
-      171,
-      179,
-      201
+      128,
+      139,
+      158,
+      169
      ],
      "answer": "Trapezius",
      "view_label_pool": [
@@ -1442,10 +1442,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      109,
-      135,
-      139,
-      165
+      112,
+      118,
+      142,
+      148
      ],
      "answer": "Rhomboid minor",
      "view_label_pool": [
@@ -1468,10 +1468,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      109,
-      161,
-      139,
-      191
+      110,
+      145,
+      140,
+      175
      ],
      "answer": "Rhomboid major",
      "view_label_pool": [
@@ -1906,10 +1906,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 356,
      "bbox_px": [
-      95,
-      135,
-      125,
-      165
+      102,
+      123,
+      132,
+      153
      ],
      "answer": "Flexor carpi ulnaris",
      "view_label_pool": [
@@ -1937,10 +1937,10 @@ window.MUSCLE_DATA = {
      "width_px": 194,
      "height_px": 598,
      "bbox_px": [
-      138,
-      172,
-      168,
-      202
+      81,
+      397,
+      111,
+      427
      ],
      "answer": "Flexor digitorum superficialis",
      "view_label_pool": [
@@ -2092,10 +2092,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 764,
      "bbox_px": [
-      139,
-      360,
-      169,
-      390
+      123,
+      314,
+      153,
+      344
      ],
      "answer": "Extensor digitorum",
      "view_label_pool": [
@@ -2123,10 +2123,10 @@ window.MUSCLE_DATA = {
      "width_px": 196,
      "height_px": 599,
      "bbox_px": [
-      101,
-      217,
-      131,
-      247
+      106,
+      335,
+      136,
+      365
      ],
      "answer": "Extensor digiti minimi",
      "view_label_pool": [
@@ -2154,10 +2154,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 764,
      "bbox_px": [
-      148,
-      323,
-      178,
-      353
+      171,
+      299,
+      201,
+      329
      ],
      "answer": "Extensor carpi ulnaris",
      "view_label_pool": [
@@ -2185,10 +2185,10 @@ window.MUSCLE_DATA = {
      "width_px": 234,
      "height_px": 598,
      "bbox_px": [
-      95,
-      260,
-      125,
-      290
+      104,
+      278,
+      134,
+      308
      ],
      "answer": "Abductor pollicis longus",
      "view_label_pool": [
@@ -2379,10 +2379,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      79,
-      544,
-      111,
-      576
+      93,
+      480,
+      125,
+      512
      ],
      "answer": "Vastus lateralis",
      "view_label_pool": [
@@ -2457,10 +2457,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      159,
-      414,
-      191,
-      446
+      310,
+      527,
+      342,
+      559
      ],
      "answer": "Sartorius",
      "view_label_pool": [
@@ -2496,10 +2496,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      249,
-      334,
-      281,
-      366
+      235,
+      248,
+      267,
+      280
      ],
      "answer": "Adductor longus",
      "view_label_pool": [
@@ -2535,10 +2535,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      264,
-      454,
-      296,
-      486
+      276,
+      331,
+      308,
+      363
      ],
      "answer": "Adductor magnus",
      "view_label_pool": [
@@ -2574,10 +2574,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      284,
-      504,
-      316,
-      536
+      306,
+      414,
+      338,
+      446
      ],
      "answer": "Gracilis",
      "view_label_pool": [
@@ -2613,10 +2613,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      164,
-      784,
-      196,
-      816
+      158,
+      746,
+      190,
+      778
      ],
      "answer": "Quadriceps tendon",
      "view_label_pool": [
@@ -2652,10 +2652,10 @@ window.MUSCLE_DATA = {
      "width_px": 400,
      "height_px": 1017,
      "bbox_px": [
-      169,
-      884,
-      201,
-      916
+      172,
+      910,
+      204,
+      942
      ],
      "answer": "Patellar ligament",
      "view_label_pool": [
@@ -2691,10 +2691,10 @@ window.MUSCLE_DATA = {
      "width_px": 480,
      "height_px": 480,
      "bbox_px": [
-      223,
-      209,
-      255,
-      241
+      266,
+      222,
+      298,
+      254
      ],
      "answer": "Gluteus maximus",
      "view_label_pool": [
@@ -2886,10 +2886,10 @@ window.MUSCLE_DATA = {
      "width_px": 292,
      "height_px": 328,
      "bbox_px": [
-      95,
-      230,
-      125,
-      260
+      92,
+      156,
+      122,
+      186
      ],
      "answer": "Semitendinosus",
      "view_label_pool": [
@@ -2932,10 +2932,10 @@ window.MUSCLE_DATA = {
      "width_px": 670,
      "height_px": 1608,
      "bbox_px": [
-      219,
-      459,
-      251,
-      491
+      351,
+      274,
+      383,
+      306
      ],
      "answer": "Tibialis anterior",
      "view_label_pool": [
@@ -2957,10 +2957,10 @@ window.MUSCLE_DATA = {
      "width_px": 670,
      "height_px": 1608,
      "bbox_px": [
-      184,
-      659,
-      216,
-      691
+      280,
+      1017,
+      312,
+      1049
      ],
      "answer": "Extensor digitorum longus",
      "view_label_pool": [
@@ -2982,10 +2982,10 @@ window.MUSCLE_DATA = {
      "width_px": 670,
      "height_px": 1608,
      "bbox_px": [
-      254,
-      824,
-      286,
-      856
+      283,
+      871,
+      315,
+      903
      ],
      "answer": "Extensor hallucis longus",
      "view_label_pool": [
@@ -3007,10 +3007,10 @@ window.MUSCLE_DATA = {
      "width_px": 670,
      "height_px": 1608,
      "bbox_px": [
-      154,
-      374,
-      186,
-      406
+      210,
+      409,
+      242,
+      441
      ],
      "answer": "Fibularis longus",
      "view_label_pool": [
@@ -3032,10 +3032,10 @@ window.MUSCLE_DATA = {
      "width_px": 530,
      "height_px": 1598,
      "bbox_px": [
-      209,
-      459,
-      241,
-      491
+      226,
+      474,
+      258,
+      506
      ],
      "answer": "Gastrocnemius",
      "view_label_pool": [
@@ -3057,10 +3057,10 @@ window.MUSCLE_DATA = {
      "width_px": 530,
      "height_px": 1598,
      "bbox_px": [
-      319,
-      724,
-      351,
-      756
+      321,
+      747,
+      353,
+      779
      ],
      "answer": "Soleus",
      "view_label_pool": [
@@ -3107,7 +3107,7 @@ window.MUSCLE_DATA = {
   },
   {
    "id": "upperlimb",
-   "title": "Upper Limb \u2605",
+   "title": "Upper Limb ★",
    "questions": [
     {
      "image": "images/ul_Deltoid.png",
@@ -3319,10 +3319,10 @@ window.MUSCLE_DATA = {
      "width_px": 330,
      "height_px": 330,
      "bbox_px": [
-      149,
-      171,
-      179,
-      201
+      128,
+      139,
+      158,
+      169
      ],
      "answer": "Trapezius",
      "view_label_pool": [
@@ -3360,10 +3360,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      109,
-      161,
-      139,
-      191
+      110,
+      145,
+      140,
+      175
      ],
      "answer": "Rhomboid major",
      "view_label_pool": [
@@ -3401,10 +3401,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      109,
-      135,
-      139,
-      165
+      112,
+      118,
+      142,
+      148
      ],
      "answer": "Rhomboid minor",
      "view_label_pool": [
@@ -3442,10 +3442,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      39,
-      98,
-      69,
-      128
+      22,
+      106,
+      52,
+      136
      ],
      "answer": "Biceps brachii (long head)",
      "view_label_pool": [
@@ -3565,10 +3565,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      34,
-      86,
-      64,
-      116
+      40,
+      92,
+      70,
+      122
      ],
      "answer": "Triceps brachii (long head)",
      "view_label_pool": [
@@ -3647,10 +3647,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 250,
      "bbox_px": [
-      32,
-      137,
-      62,
-      167
+      16,
+      149,
+      46,
+      179
      ],
      "answer": "Triceps brachii (medial head)",
      "view_label_pool": [
@@ -3893,10 +3893,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 356,
      "bbox_px": [
-      95,
-      135,
-      125,
-      165
+      102,
+      123,
+      132,
+      153
      ],
      "answer": "Flexor carpi ulnaris",
      "view_label_pool": [
@@ -3934,10 +3934,10 @@ window.MUSCLE_DATA = {
      "width_px": 194,
      "height_px": 598,
      "bbox_px": [
-      138,
-      172,
-      168,
-      202
+      81,
+      397,
+      111,
+      427
      ],
      "answer": "Flexor digitorum superficialis",
      "view_label_pool": [
@@ -4057,10 +4057,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 764,
      "bbox_px": [
-      148,
-      323,
-      178,
-      353
+      171,
+      299,
+      201,
+      329
      ],
      "answer": "Extensor carpi ulnaris",
      "view_label_pool": [
@@ -4098,10 +4098,10 @@ window.MUSCLE_DATA = {
      "width_px": 196,
      "height_px": 599,
      "bbox_px": [
-      101,
-      217,
-      131,
-      247
+      106,
+      335,
+      136,
+      365
      ],
      "answer": "Extensor digiti minimi",
      "view_label_pool": [
@@ -4139,10 +4139,10 @@ window.MUSCLE_DATA = {
      "width_px": 250,
      "height_px": 764,
      "bbox_px": [
-      139,
-      360,
-      169,
-      390
+      123,
+      314,
+      153,
+      344
      ],
      "answer": "Extensor digitorum",
      "view_label_pool": [
@@ -4180,10 +4180,10 @@ window.MUSCLE_DATA = {
      "width_px": 234,
      "height_px": 598,
      "bbox_px": [
-      95,
-      260,
-      125,
-      290
+      104,
+      278,
+      134,
+      308
      ],
      "answer": "Abductor pollicis longus",
      "view_label_pool": [
