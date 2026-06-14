@@ -5,14 +5,14 @@ window.MUSCLE_DATA = {
    "title": "Tissue",
    "questions": [
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      155,
-      85,
-      185,
-      115
+      132,
+      217,
+      168,
+      253
      ],
      "answer": "Skeletal Muscle Fiber",
      "view_label_pool": [
@@ -28,14 +28,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      125,
-      143,
-      155,
-      173
+      92,
+      267,
+      128,
+      303
      ],
      "answer": "Nucleus",
      "view_label_pool": [
@@ -51,14 +51,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      250,
-      55,
-      280,
-      85
+      207,
+      102,
+      243,
+      138
      ],
      "answer": "Mitochondria",
      "view_label_pool": [
@@ -74,14 +74,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      190,
-      33,
-      220,
-      63
+      82,
+      117,
+      118,
+      153
      ],
      "answer": "Sarcolemma",
      "view_label_pool": [
@@ -97,14 +97,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      265,
-      440,
-      295,
-      470
+      427,
+      92,
+      463,
+      128
      ],
      "answer": "Myofibrils",
      "view_label_pool": [
@@ -120,14 +120,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      210,
-      497,
-      240,
-      527
+      167,
+      197,
+      203,
+      233
      ],
      "answer": "Sarcoplasm",
      "view_label_pool": [
@@ -143,14 +143,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      390,
-      475,
-      420,
-      505
+      387,
+      217,
+      423,
+      253
      ],
      "answer": "Sarcomere",
      "view_label_pool": [
@@ -166,14 +166,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/tissue_fiber.png",
+     "width_px": 600,
+     "height_px": 546,
      "bbox_px": [
-      80,
-      475,
-      110,
-      505
+      432,
+      457,
+      468,
+      493
      ],
      "answer": "Sarcoplasmic reticulum",
      "view_label_pool": [
