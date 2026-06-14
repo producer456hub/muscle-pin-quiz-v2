@@ -285,14 +285,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_nasalis.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      297,
-      525,
-      327,
-      555
+      28,
+      211,
+      60,
+      243
      ],
      "answer": "Nasalis",
      "view_label_pool": [
@@ -315,14 +315,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_zygomaticus_minor.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      477,
-      675,
-      507,
-      705
+      313,
+      244,
+      345,
+      276
      ],
      "answer": "Zygomaticus minor",
      "view_label_pool": [
@@ -345,14 +345,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_zygomaticus_major.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      505,
-      750,
-      535,
-      780
+      293,
+      264,
+      325,
+      296
      ],
      "answer": "Zygomaticus major",
      "view_label_pool": [
@@ -405,14 +405,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_buccinator.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      475,
-      847,
-      505,
-      877
+      80,
+      292,
+      112,
+      324
      ],
      "answer": "Buccinator",
      "view_label_pool": [
@@ -435,14 +435,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_risorius.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      513,
-      823,
-      543,
-      853
+      86,
+      301,
+      118,
+      333
      ],
      "answer": "Risorius",
      "view_label_pool": [
@@ -465,14 +465,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_depressor_anguli_oris.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      440,
-      910,
-      470,
-      940
+      70,
+      329,
+      102,
+      361
      ],
      "answer": "Depressor anguli oris",
      "view_label_pool": [
@@ -495,14 +495,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/face_mentalis.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      330,
-      970,
-      360,
-      1000
+      44,
+      345,
+      76,
+      377
      ],
      "answer": "Mentalis",
      "view_label_pool": [
@@ -525,14 +525,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/Lateral_head_anatomy.jpg",
-     "width_px": 1205,
-     "height_px": 1424,
+     "image": "images/face_temporalis.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      385,
-      385,
-      415,
-      415
+      166,
+      142,
+      198,
+      174
      ],
      "answer": "Temporalis",
      "view_label_pool": [
@@ -555,14 +555,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/Lateral_head_anatomy.jpg",
-     "width_px": 1205,
-     "height_px": 1424,
+     "image": "images/face_masseter.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      395,
-      890,
-      425,
-      920
+      124,
+      273,
+      156,
+      305
      ],
      "answer": "Masseter",
      "view_label_pool": [
@@ -675,14 +675,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/Lateral_head_anatomy.jpg",
-     "width_px": 1205,
-     "height_px": 1424,
+     "image": "images/face_zygomaticus_major.png",
+     "width_px": 400,
+     "height_px": 400,
      "bbox_px": [
-      220,
-      645,
-      250,
-      675
+      293,
+      264,
+      325,
+      296
      ],
      "answer": "Zygomaticus major",
      "view_label_pool": [
@@ -705,14 +705,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/Lateral_head_anatomy.jpg",
-     "width_px": 1205,
-     "height_px": 1424,
+     "image": "images/neck_scm.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      635,
-      1065,
-      665,
-      1095
+      278,
+      259,
+      322,
+      303
      ],
      "answer": "Sternocleidomastoid",
      "view_label_pool": [
@@ -735,14 +735,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/Lateral_head_anatomy.jpg",
-     "width_px": 1205,
-     "height_px": 1424,
+     "image": "images/ul_Trapezius.png",
+     "width_px": 330,
+     "height_px": 330,
      "bbox_px": [
-      865,
-      985,
-      895,
-      1015
+      149,
+      171,
+      179,
+      201
      ],
      "answer": "Trapezius",
      "view_label_pool": [
@@ -2685,14 +2685,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_post_blank.png",
-     "width_px": 292,
-     "height_px": 328,
+     "image": "images/thigh_gluteus_maximus.png",
+     "width_px": 480,
+     "height_px": 480,
      "bbox_px": [
-      80,
-      80,
-      110,
-      110
+      223,
+      209,
+      255,
+      241
      ],
      "answer": "Gluteus maximus",
      "view_label_pool": [
@@ -2724,14 +2724,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_post_blank.png",
-     "width_px": 292,
-     "height_px": 328,
+     "image": "images/thigh_gluteus_medius.png",
+     "width_px": 480,
+     "height_px": 480,
      "bbox_px": [
-      45,
-      33,
-      75,
-      63
+      316,
+      243,
+      348,
+      275
      ],
      "answer": "Gluteus medius",
      "view_label_pool": [
@@ -2763,14 +2763,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_post_blank.png",
-     "width_px": 292,
-     "height_px": 328,
+     "image": "images/thigh_piriformis.png",
+     "width_px": 480,
+     "height_px": 480,
      "bbox_px": [
-      93,
-      53,
-      123,
-      83
+      175,
+      111,
+      207,
+      143
      ],
      "answer": "Piriformis",
      "view_label_pool": [
@@ -2802,14 +2802,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_post_blank.png",
-     "width_px": 292,
-     "height_px": 328,
+     "image": "images/thigh_biceps_femoris.png",
+     "width_px": 480,
+     "height_px": 480,
      "bbox_px": [
-      55,
-      195,
-      85,
-      225
+      264,
+      258,
+      296,
+      290
      ],
      "answer": "Biceps femoris",
      "view_label_pool": [
@@ -2841,14 +2841,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_post_blank.png",
-     "width_px": 292,
-     "height_px": 328,
+     "image": "images/thigh_semimembranosus.png",
+     "width_px": 480,
+     "height_px": 480,
      "bbox_px": [
-      123,
-      200,
-      153,
-      230
+      235,
+      265,
+      267,
+      297
      ],
      "answer": "Semimembranosus",
      "view_label_pool": [
