@@ -146,7 +146,7 @@
       <span class="zoom-ctrl">🔍 <button type="button" class="zbtn" data-zoom="out">−</button>
       <span id="f-zoomval">100%</span><button type="button" class="zbtn" data-zoom="in">+</button>
       <button type="button" class="zbtn" data-zoom="fit">Fit</button></span></div>
-    <div class="flip-hint">Click the card (or Space) to flip</div>
+    <div id="f-hint" class="flip-hint">Click the card (or Space) to flip</div>
     <div id="flash-card" class="flashcard"><div id="flash-inner" class="flash-inner">
       <div class="flash-front"><div class="img-area" style="margin-bottom:0"><div class="image-wrap" id="f-imgwrap">
         <img id="f-img" alt="muscle image" />
@@ -188,7 +188,9 @@ function bboxOf(q){ return CORR[qKey(q)] || q.bbox_px; }
 
 function initLabels(){
   const set = new Set();
-  DATA.sections.forEach(s => s.questions.forEach(q => { (q.view_label_pool||[]).forEach(l=>set.add(l)); set.add(q.answer); }));
+  // skip sections flagged excludeFromGlobal (e.g. In-Class bank, whose action/insertion
+  // phrase-options shouldn't leak in as distractors for other regions' muscle questions)
+  DATA.sections.forEach(s => { if(s.excludeFromGlobal) return; s.questions.forEach(q => { (q.view_label_pool||[]).forEach(l=>set.add(l)); set.add(q.answer); }); });
   GLOBAL_LABELS = Array.from(set);
 }
 
@@ -282,6 +284,7 @@ function renderQuiz(){
   document.getElementById('q-score').textContent=state.score;
   document.getElementById('q-progress').style.width=(100*state.idx/state.questions.length)+'%';
   document.getElementById('q-img').src=q.image;
+  document.getElementById('q-question-text').textContent = q.prompt || 'What muscle / structure is pinned?';
   setMarker(document.getElementById('q-svg'),q);
   // options: answer + 5 distractors (same-region pool first, then global)
   let pool=(q.view_label_pool||[]).filter(t=>t!==q.answer);
@@ -316,6 +319,7 @@ function renderFlash(){ exitEdit(); const q=state.questions[state.idx];
   document.getElementById('f-index').textContent=state.idx+1;
   document.getElementById('f-progress').style.width=(100*(state.idx+1)/state.questions.length)+'%';
   document.getElementById('f-img').src=q.image; setMarker(document.getElementById('f-svg'),q);
+  document.getElementById('f-hint').textContent = (q.prompt ? q.prompt+' — ' : '') + 'Click the card (or Space) to flip';
   document.getElementById('flash-back').textContent=q.answer;
   document.getElementById('flash-inner').classList.remove('flipped'); }
 function flipFlash(){ if(editing) return; document.getElementById('flash-inner').classList.toggle('flipped'); }

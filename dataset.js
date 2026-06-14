@@ -28,14 +28,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/inclass_s7.jpg",
+     "width_px": 1100,
+     "height_px": 940,
      "bbox_px": [
-      129,
-      151,
-      159,
-      181
+      646,
+      366,
+      694,
+      414
      ],
      "answer": "Nucleus",
      "view_label_pool": [
@@ -74,14 +74,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/inclass_s7.jpg",
+     "width_px": 1100,
+     "height_px": 940,
      "bbox_px": [
-      190,
-      33,
-      220,
-      63
+      640,
+      196,
+      688,
+      244
      ],
      "answer": "Sarcolemma",
      "view_label_pool": [
@@ -97,14 +97,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/tissue_blank.png",
-     "width_px": 801,
-     "height_px": 642,
+     "image": "images/inclass_s7.jpg",
+     "width_px": 1100,
+     "height_px": 940,
      "bbox_px": [
-      321,
-      154,
-      351,
-      184
+      236,
+      129,
+      284,
+      177
      ],
      "answer": "Myofibrils",
      "view_label_pool": [
@@ -255,14 +255,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/facial_anterior_blank.png",
-     "width_px": 658,
-     "height_px": 1090,
+     "image": "images/inclass_s3.jpg",
+     "width_px": 700,
+     "height_px": 880,
      "bbox_px": [
-      609,
-      492,
-      639,
-      522
+      443,
+      350,
+      479,
+      386
      ],
      "answer": "Orbicularis oculi",
      "view_label_pool": [
@@ -1038,14 +1038,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/abdomen_wall.png",
-     "width_px": 936,
-     "height_px": 608,
+     "image": "images/inclass_s2.jpg",
+     "width_px": 520,
+     "height_px": 780,
      "bbox_px": [
-      317,
-      200,
-      353,
-      236
+      348,
+      407,
+      374,
+      433
      ],
      "answer": "External oblique",
      "view_label_pool": [
@@ -4214,6 +4214,331 @@ window.MUSCLE_DATA = {
       "Extensor digiti minimi",
       "Extensor digitorum",
       "Abductor pollicis longus"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "inclass",
+   "title": "In-Class Prep Quiz",
+   "updated": true,
+   "excludeFromGlobal": true,
+   "questions": [
+    {
+     "image": "images/inclass_s2.jpg",
+     "width_px": 520,
+     "height_px": 780,
+     "bbox_px": [
+      197,
+      107,
+      223,
+      133
+     ],
+     "answer": "External intercostal",
+     "prompt": "Station 2 · What is this muscle?",
+     "view_label_pool": [
+      "Pectoralis major",
+      "Pectoralis minor",
+      "Innermost intercostal",
+      "External intercostal",
+      "Internal intercostal"
+     ]
+    },
+    {
+     "image": "images/inclass_s2.jpg",
+     "width_px": 520,
+     "height_px": 780,
+     "bbox_px": [
+      348,
+      407,
+      374,
+      433
+     ],
+     "answer": "External oblique",
+     "prompt": "Station 2 · What is this muscle?",
+     "view_label_pool": [
+      "External oblique",
+      "Internal oblique",
+      "Transverse abdominis",
+      "Rectus abdominis"
+     ]
+    },
+    {
+     "image": "images/inclass_s3.jpg",
+     "width_px": 700,
+     "height_px": 880,
+     "bbox_px": [
+      443,
+      350,
+      479,
+      386
+     ],
+     "answer": "Orbicularis oculi",
+     "prompt": "Station 3 · What muscle is this?",
+     "view_label_pool": [
+      "Orbicularis oculi",
+      "Orbicularis oris",
+      "Temporalis",
+      "Buccinator",
+      "Masseter"
+     ]
+    },
+    {
+     "image": "images/inclass_s3.jpg",
+     "width_px": 700,
+     "height_px": 880,
+     "bbox_px": [
+      147,
+      517,
+      183,
+      553
+     ],
+     "answer": "Zygomaticus major",
+     "prompt": "Station 3 · What muscle is this?",
+     "view_label_pool": [
+      "Zygomaticus major",
+      "Mentalis",
+      "Risorius",
+      "Zygomaticus minor",
+      "Depressor anguli oris"
+     ]
+    },
+    {
+     "image": "images/inclass_s4.jpg",
+     "width_px": 1200,
+     "height_px": 390,
+     "bbox_px": [
+      960,
+      199,
+      984,
+      223
+     ],
+     "answer": "Biceps brachii (long head)",
+     "prompt": "Station 4 · What is this muscle?",
+     "view_label_pool": [
+      "Coracobrachialis",
+      "Biceps brachii (long head)",
+      "Biceps brachii (short head)",
+      "Supraspinatus",
+      "Subscapularis"
+     ]
+    },
+    {
+     "image": "images/inclass_s4.jpg",
+     "width_px": 1200,
+     "height_px": 390,
+     "bbox_px": [
+      288,
+      108,
+      312,
+      132
+     ],
+     "answer": "Flexor digitorum superficialis",
+     "prompt": "Station 4 · What is this muscle?",
+     "view_label_pool": [
+      "Flexor carpi ulnaris",
+      "Flexor digitorum superficialis",
+      "Flexor digitorum profundus",
+      "Abductor pollicis longus"
+     ]
+    },
+    {
+     "image": "images/inclass_s4.jpg",
+     "width_px": 1200,
+     "height_px": 390,
+     "bbox_px": [
+      554,
+      78,
+      578,
+      102
+     ],
+     "answer": "Extensor digitorum",
+     "prompt": "Station 4 · What muscle is this?",
+     "view_label_pool": [
+      "Supinator",
+      "Extensor digiti minimi",
+      "Extensor carpi radialis longus",
+      "Extensor carpi radialis brevis",
+      "Extensor digitorum"
+     ]
+    },
+    {
+     "image": "images/inclass_s4.jpg",
+     "width_px": 1200,
+     "height_px": 390,
+     "bbox_px": [
+      458,
+      103,
+      482,
+      127
+     ],
+     "answer": "Brachioradialis",
+     "prompt": "Station 4 · What muscle is this?",
+     "view_label_pool": [
+      "Pronator teres",
+      "Brachioradialis",
+      "Anconeus",
+      "Teres major",
+      "Teres minor"
+     ]
+    },
+    {
+     "image": "images/inclass_s5.jpg",
+     "width_px": 480,
+     "height_px": 1380,
+     "bbox_px": [
+      178,
+      523,
+      202,
+      547
+     ],
+     "answer": "Latissimus dorsi",
+     "prompt": "Station 5 · What muscle is this?",
+     "view_label_pool": [
+      "Latissimus dorsi",
+      "Rectus abdominis",
+      "Deltoid",
+      "Sternocleidomastoid",
+      "Serratus anterior"
+     ]
+    },
+    {
+     "image": "images/inclass_s5.jpg",
+     "width_px": 480,
+     "height_px": 1380,
+     "bbox_px": [
+      118,
+      288,
+      142,
+      312
+     ],
+     "answer": "Rhomboid major",
+     "prompt": "Station 5 · What muscle is this?",
+     "view_label_pool": [
+      "Iliacus",
+      "Psoas major",
+      "Diaphragm",
+      "Rhomboid major",
+      "Rhomboid minor"
+     ]
+    },
+    {
+     "image": "images/inclass_s5.jpg",
+     "width_px": 480,
+     "height_px": 1380,
+     "bbox_px": [
+      178,
+      523,
+      202,
+      547
+     ],
+     "answer": "Extends, adducts and medially rotates arm",
+     "prompt": "Station 5 · What is this muscle's PRIMARY ACTION?",
+     "view_label_pool": [
+      "Flexes vertebral column, compresses abdomen",
+      "Protracts and depresses scapula",
+      "Extends, adducts and medially rotates arm",
+      "Flexes neck, rotates head to the opposite side",
+      "Abducts the arm at the shoulder",
+      "Flexes the forearm at the elbow"
+     ]
+    },
+    {
+     "image": "images/inclass_s5.jpg",
+     "width_px": 480,
+     "height_px": 1380,
+     "bbox_px": [
+      198,
+      403,
+      222,
+      427
+     ],
+     "answer": "Intertubercular sulcus of the humerus",
+     "prompt": "Station 5 · What is this muscle's INSERTION?",
+     "view_label_pool": [
+      "Intertubercular sulcus of the humerus",
+      "Coracoid process of the scapula",
+      "Spinous process of the lower vertebrae, iliac crest",
+      "Ribs 3 - 5",
+      "Deltoid tuberosity of the humerus",
+      "Greater tubercle of the humerus"
+     ]
+    },
+    {
+     "image": "images/inclass_s6.jpg",
+     "width_px": 620,
+     "height_px": 1340,
+     "bbox_px": [
+      272,
+      512,
+      304,
+      544
+     ],
+     "answer": "Tendinous Intersections",
+     "prompt": "Station 6 · What non-muscular structure is this?",
+     "view_label_pool": [
+      "Linea Alba",
+      "Anterior Rectus Sheath",
+      "Tendinous Intersections",
+      "Galea aponeurotica"
+     ]
+    },
+    {
+     "image": "images/inclass_s6.jpg",
+     "width_px": 620,
+     "height_px": 1340,
+     "bbox_px": [
+      400,
+      851,
+      432,
+      883
+     ],
+     "answer": "Iliotibial (IT) Band",
+     "prompt": "Station 6 · What non-muscular structure is this?",
+     "view_label_pool": [
+      "Patellar ligament",
+      "Sciatic nerve",
+      "Calcaneal tendon",
+      "Iliotibial (IT) Band",
+      "Quadriceps tendon"
+     ]
+    },
+    {
+     "image": "images/inclass_s7.jpg",
+     "width_px": 1100,
+     "height_px": 940,
+     "bbox_px": [
+      236,
+      129,
+      284,
+      177
+     ],
+     "answer": "Myofibrils",
+     "prompt": "Station 7 · What is this structure?",
+     "view_label_pool": [
+      "Myofibrils",
+      "Muscle fiber",
+      "Endoplasmic reticulum",
+      "T-Tubules"
+     ]
+    },
+    {
+     "image": "images/inclass_s7.jpg",
+     "width_px": 1100,
+     "height_px": 940,
+     "bbox_px": [
+      640,
+      196,
+      688,
+      244
+     ],
+     "answer": "Sarcolemma",
+     "prompt": "Station 7 · What is this structure?",
+     "view_label_pool": [
+      "Sarcomere",
+      "Sarcolemma",
+      "Nucleus",
+      "Sarcoplasm"
      ]
     }
    ]
