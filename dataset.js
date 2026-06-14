@@ -897,14 +897,14 @@ window.MUSCLE_DATA = {
    "title": "Neck",
    "questions": [
     {
-     "image": "images/neck_lateral_blank.png",
-     "width_px": 365,
-     "height_px": 595,
+     "image": "images/neck_scm.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      130,
-      315,
-      160,
-      345
+      278,
+      259,
+      322,
+      303
      ],
      "answer": "Sternocleidomastoid",
      "view_label_pool": [
@@ -936,21 +936,22 @@ window.MUSCLE_DATA = {
       "Trapezius"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "trunk",
    "title": "Trunk",
    "questions": [
     {
-     "image": "images/abdomen_superficial.png",
-     "width_px": 960,
-     "height_px": 720,
+     "image": "images/trunk_pecmajor.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      282,
-      92,
-      318,
-      128
+      218,
+      250,
+      262,
+      294
      ],
      "answer": "Pectoralis major",
      "view_label_pool": [
@@ -974,14 +975,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/abdomen_superficial.png",
-     "width_px": 960,
-     "height_px": 720,
+     "image": "images/trunk_latdorsi.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      647,
-      82,
-      683,
-      118
+      279,
+      343,
+      319,
+      383
      ],
      "answer": "Latissimus dorsi",
      "view_label_pool": [
@@ -1005,14 +1006,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/abdomen_superficial.png",
-     "width_px": 960,
-     "height_px": 720,
+     "image": "images/trunk_serratus.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      542,
-      132,
-      578,
-      168
+      406,
+      395,
+      446,
+      435
      ],
      "answer": "Serratus anterior",
      "view_label_pool": [
@@ -2208,21 +2209,22 @@ window.MUSCLE_DATA = {
       "Supinator"
      ]
     }
-   ]
+   ],
+   "updated": true
   },
   {
    "id": "hipthigh",
    "title": "Hip/Thigh",
    "questions": [
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_psoas.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      225,
-      150,
-      255,
-      180
+      280,
+      230,
+      320,
+      270
      ],
      "answer": "Psoas major",
      "view_label_pool": [
@@ -2254,14 +2256,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_iliacus.png",
+     "width_px": 600,
+     "height_px": 600,
      "bbox_px": [
-      170,
-      180,
+      195,
       200,
-      210
+      235,
+      240
      ],
      "answer": "Iliacus",
      "view_label_pool": [
@@ -2293,14 +2295,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      100,
-      220,
-      130,
-      250
+      46,
+      184,
+      78,
+      216
      ],
      "answer": "Tensor fasciae latae",
      "view_label_pool": [
@@ -2332,14 +2334,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      185,
-      565,
-      215,
-      595
+      144,
+      474,
+      176,
+      506
      ],
      "answer": "Rectus femoris",
      "view_label_pool": [
@@ -2371,14 +2373,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      115,
-      685,
-      145,
-      715
+      79,
+      544,
+      111,
+      576
      ],
      "answer": "Vastus lateralis",
      "view_label_pool": [
@@ -2410,14 +2412,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      235,
-      915,
-      265,
-      945
+      209,
+      704,
+      241,
+      736
      ],
      "answer": "Vastus medialis",
      "view_label_pool": [
@@ -2449,14 +2451,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      215,
-      685,
-      245,
-      715
+      159,
+      414,
+      191,
+      446
      ],
      "answer": "Sartorius",
      "view_label_pool": [
@@ -2488,14 +2490,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      275,
-      415,
-      305,
-      445
+      249,
+      334,
+      281,
+      366
      ],
      "answer": "Adductor longus",
      "view_label_pool": [
@@ -2527,14 +2529,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      285,
-      585,
-      315,
-      615
+      264,
+      454,
+      296,
+      486
      ],
      "answer": "Adductor magnus",
      "view_label_pool": [
@@ -2566,14 +2568,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      300,
-      525,
-      330,
-      555
+      284,
+      504,
+      316,
+      536
      ],
      "answer": "Gracilis",
      "view_label_pool": [
@@ -2605,14 +2607,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      175,
-      995,
-      205,
-      1025
+      164,
+      784,
+      196,
+      816
      ],
      "answer": "Quadriceps tendon",
      "view_label_pool": [
@@ -2644,14 +2646,14 @@ window.MUSCLE_DATA = {
      ]
     },
     {
-     "image": "images/thigh_ant_blank.png",
-     "width_px": 450,
-     "height_px": 1224,
+     "image": "images/thigh_ant.png",
+     "width_px": 400,
+     "height_px": 1017,
      "bbox_px": [
-      160,
-      1125,
-      190,
-      1155
+      169,
+      884,
+      201,
+      916
      ],
      "answer": "Patellar ligament",
      "view_label_pool": [
