@@ -98,7 +98,8 @@
       <label><input type="radio" name="mode" value="flash" /> Flashcards</label></div></div>
     <div class="row"><strong>Order:</strong><div class="radio-group">
       <label><input type="radio" name="order" value="shuffle" checked /> Shuffle</label>
-      <label><input type="radio" name="order" value="sequential" /> In order</label></div></div>
+      <label><input type="radio" name="order" value="sequential" /> In order (front&rarr;back)</label>
+      <label><input type="radio" name="order" value="reverse" /> In order (back&rarr;front)</label></div></div>
     <div class="row"><strong>How many:</strong><div class="radio-group">
       <label><input type="radio" name="count" value="10" /> 10</label>
       <label><input type="radio" name="count" value="25" checked /> 25</label>
@@ -235,6 +236,7 @@ function startSession(){
   const cs=document.querySelector('input[name="count"]:checked').value;
   let qs=buildQuestions(); if(!qs.length){ alert('Pick at least one region.'); return; }
   if(order==='shuffle') shuffle(qs);
+  else if(order==='reverse') qs.reverse();
   const n = cs==='all'?qs.length:Math.min(parseInt(cs,10),qs.length);
   qs=qs.slice(0,n);
   state={mode,questions:qs,idx:0,score:0,answered:false};
