@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Term Quiz — Muscle Lab Practical</title>
+<style>
+  :root{--bg:#fafafa;--card:#fff;--ink:#1a1a1a;--muted:#666;--accent:#2563eb;--accent-hover:#1d4ed8;
+    --good:#16a34a;--bad:#dc2626;--border:#e5e7eb;}
+  *{box-sizing:border-box;} body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);margin:0;padding:16px;line-height:1.4;}
+  .app{max-width:900px;margin:0 auto;} header{text-align:center;margin-bottom:14px;}
+  h1{margin:0 0 4px 0;font-size:22px;} .subtitle{color:var(--muted);font-size:13px;}
+  a.nav{color:var(--accent);text-decoration:none;font-size:13px;font-weight:600;}
+  a.nav:hover{text-decoration:underline;}
+  .setup,.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;
+    margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  .setup h2{margin-top:0;font-size:17px;}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px;}
+  .checkbox-group,.radio-group{display:flex;flex-wrap:wrap;gap:10px;}
+  .checkbox-group label,.radio-group label{display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:#f9fafb;font-size:13px;}
+  .mini{background:#eef2ff;border:0;color:#3730a3;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;}
+  .mini:hover{background:#e0e7ff;}
+  button{background:var(--accent);color:#fff;border:0;padding:10px 18px;border-radius:8px;font-size:14px;
+    font-weight:600;cursor:pointer;transition:background .15s;}
+  button:hover{background:var(--accent-hover);} button.secondary{background:#6b7280;}
+  button.secondary:hover{background:#4b5563;} button:disabled{background:#d1d5db;cursor:not-allowed;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:12px;flex-wrap:wrap;}
+  .topbar .score{font-size:14px;color:var(--muted);} .topbar .score strong{color:var(--ink);}
+  .progress{height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden;margin-bottom:14px;}
+  .progress-fill{height:100%;background:var(--accent);transition:width .3s;}
+  .qcat{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:999px;padding:2px 10px;font-weight:700;font-size:11px;margin-bottom:8px;}
+  .question-text{font-size:17px;font-weight:600;margin:4px 0 14px 0;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .options.one{grid-template-columns:1fr;}
+  @media(max-width:600px){.options{grid-template-columns:1fr;}}
+  .option{background:#f9fafb;color:var(--ink);border:2px solid var(--border);border-radius:8px;padding:12px 14px;
+    cursor:pointer;text-align:left;font-size:14px;font-weight:500;transition:all .15s;display:flex;align-items:flex-start;gap:10px;}
+  .option .key{background:#e5e7eb;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;color:var(--muted);
+    font-family:ui-monospace,Menlo,Consolas,monospace;flex:none;}
+  .option:hover:not(:disabled){border-color:var(--accent);background:#eff6ff;}
+  .option.correct{border-color:var(--good);background:#f0fdf4;color:var(--good);font-weight:600;}
+  .option.wrong{border-color:var(--bad);background:#fef2f2;color:var(--bad);font-weight:600;}
+  .option:disabled{cursor:not-allowed;opacity:.9;}
+  .feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:14px;font-weight:600;}
+  .feedback.correct{background:#f0fdf4;color:var(--good);border:1px solid #86efac;}
+  .feedback.wrong{background:#fef2f2;color:var(--bad);border:1px solid #fca5a5;}
+  .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center;}
+  .flashcard{perspective:1200px;margin-bottom:14px;user-select:none;}
+  .flash-inner{position:relative;min-height:150px;transform-style:preserve-3d;transition:transform .6s;cursor:pointer;}
+  .flash-inner.flipped{transform:rotateY(180deg);}
+  .flash-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    display:flex;align-items:center;justify-content:center;text-align:center;border-radius:10px;padding:24px;}
+  .flash-front{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;font-size:18px;font-weight:600;}
+  .flash-back{background:#1f2937;color:#fff;font-size:22px;font-weight:700;transform:rotateY(180deg);}
+  .flip-hint{text-align:center;color:var(--muted);font-size:13px;margin-bottom:8px;}
+  .complete{text-align:center;padding:30px;} .complete .big-score{font-size:48px;font-weight:700;color:var(--accent);margin:12px 0;}
+  .kbd-hint{color:var(--muted);font-size:12px;margin-top:10px;text-align:center;}
+  .hidden{display:none!important;}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Term Quiz</h1>
+    <div class="subtitle">Multiple choice &amp; flashcards from the glossary — match terms to their definitions</div>
+    <div style="margin-top:6px;"><a class="nav" href="index.html">← Pin Quiz</a> &nbsp;·&nbsp; <a class="nav" href="glossary.html">📖 Glossary</a></div>
+  </header>
+
+  <section id="setup" class="setup">
+    <h2>Start a session</h2>
+    <div class="row"><strong>Sections:</strong><div id="cat-checks" class="checkbox-group"></div></div>
+    <div class="row">
+      <button class="mini" id="all-btn" type="button">Select all</button>
+      <button class="mini" id="none-btn" type="button">Clear</button>
+    </div>
+    <div class="row"><strong>Direction:</strong><div class="radio-group">
+      <label><input type="radio" name="dir" value="def2term" checked /> See definition → pick the term</label>
+      <label><input type="radio" name="dir" value="term2def" /> See term → pick the definition</label></div></div>
+    <div class="row"><strong>Mode:</strong><div class="radio-group">
+      <label><input type="radio" name="mode" value="quiz" checked /> Multiple choice</label>
+      <label><input type="radio" name="mode" value="flash" /> Flashcards</label></div></div>
+    <div class="row"><strong>Order:</strong><div class="radio-group">
+      <label><input type="radio" name="order" value="shuffle" checked /> Shuffle</label>
+      <label><input type="radio" name="order" value="sequential" /> In order</label></div></div>
+    <div class="row"><strong>How many:</strong><div class="radio-group">
+      <label><input type="radio" name="count" value="10" /> 10</label>
+      <label><input type="radio" name="count" value="25" checked /> 25</label>
+      <label><input type="radio" name="count" value="50" /> 50</label>
+      <label><input type="radio" name="count" value="all" /> All</label></div></div>
+    <div class="row"><button id="start-btn">Start session</button>
+      <span id="pool-size" class="subtitle"></span></div>
+  </section>
+
+  <section id="quiz-screen" class="card hidden">
+    <div class="topbar">
+      <div class="score">Q <strong id="q-index">1</strong> / <strong id="q-total">10</strong> · Score: <strong id="q-score">0</strong></div>
+      <button class="secondary" onclick="endSession()">End session</button>
+    </div>
+    <div class="progress"><div id="q-progress" class="progress-fill" style="width:0%"></div></div>
+    <div id="q-cat" class="qcat"></div>
+    <div id="q-question-text" class="question-text"></div>
+    <div id="q-options" class="options"></div>
+    <div id="q-feedback" class="feedback hidden"></div>
+    <div class="actions">
+      <button id="next-btn" disabled>Next →</button>
+      <button id="skip-btn" class="secondary">Skip / Show answer</button>
+    </div>
+    <div class="kbd-hint">Keys: 1–6 choose · Enter next · S skip</div>
+  </section>
+
+  <section id="flash-screen" class="card hidden">
+    <div class="topbar"><div class="score">Card <strong id="f-index">1</strong> / <strong id="f-total">10</strong></div>
+      <button class="secondary" onclick="endSession()">End session</button></div>
+    <div class="progress"><div id="f-progress" class="progress-fill" style="width:0%"></div></div>
+    <div id="f-cat" class="qcat"></div>
+    <div class="flip-hint">Click the card (or Space) to flip</div>
+    <div class="flashcard"><div id="flash-inner" class="flash-inner">
+      <div id="flash-front" class="flash-face flash-front"></div>
+      <div id="flash-back" class="flash-face flash-back"></div></div></div>
+    <div class="actions">
+      <button id="f-prev-btn" class="secondary">← Prev</button>
+      <button id="f-flip-btn">Flip</button>
+      <button id="f-next-btn">Next →</button>
+    </div>
+    <div class="kbd-hint">Keys: Space flip · ← → navigate</div>
+  </section>
+
+  <section id="complete-screen" class="card hidden">
+    <div class="complete"><h2>Session complete!</h2>
+      <div id="final-score" class="big-score">0 / 0</div>
+      <div id="final-pct" class="subtitle">0%</div>
+      <div style="margin-top:20px;"><button onclick="resetToSetup()">New session</button></div></div>
+  </section>
+</div>
+
+<script src="glossary.js"></script>
+<script>
+const G = window.GLOSSARY;
+const TERMS = G.terms;
+let state = null;
+
+function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function pickN(arr,n){ return shuffle(arr.slice()).slice(0,n); }
+
+function buildCatChecks(){
+  const wrap=document.getElementById('cat-checks'); wrap.innerHTML='';
+  G.categories.forEach(c=>{
+    const n=TERMS.filter(t=>t.c===c).length;
+    const l=document.createElement('label');
+    l.innerHTML=`<input type="checkbox" value="${esc(c)}" checked /> ${esc(c)} <span style="color:#888">(${n})</span>`;
+    wrap.appendChild(l);
+  });
+  wrap.addEventListener('change',updatePoolSize);
+}
+function selectedCats(){ return new Set(Array.from(document.querySelectorAll('#cat-checks input:checked')).map(i=>i.value)); }
+function pool(){ const s=selectedCats(); return TERMS.filter(t=>s.has(t.c)); }
+function updatePoolSize(){ document.getElementById('pool-size').textContent=`(${pool().length} terms in pool)`; }
+
+function startSession(){
+  const dir=document.querySelector('input[name="dir"]:checked').value;
+  const mode=document.querySelector('input[name="mode"]:checked').value;
+  const order=document.querySelector('input[name="order"]:checked').value;
+  const cs=document.querySelector('input[name="count"]:checked').value;
+  let qs=pool(); if(!qs.length){ alert('Pick at least one section.'); return; }
+  qs=qs.slice();
+  if(order==='shuffle') shuffle(qs);
+  const n = cs==='all'?qs.length:Math.min(parseInt(cs,10),qs.length);
+  qs=qs.slice(0,n);
+  state={dir,mode,questions:qs,idx:0,score:0,answered:false};
+  document.getElementById('setup').classList.add('hidden');
+  if(mode==='quiz'){ show('quiz-screen'); document.getElementById('q-total').textContent=qs.length; renderQuiz(); }
+  else { show('flash-screen'); document.getElementById('f-total').textContent=qs.length; renderFlash(); }
+}
+function show(id){ document.getElementById(id).classList.remove('hidden'); }
+function endSession(){ if(state&&state.mode==='quiz') showComplete(); else resetToSetup(); }
+function resetToSetup(){ state=null; ['quiz-screen','flash-screen','complete-screen'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  document.getElementById('setup').classList.remove('hidden'); updatePoolSize(); }
+function showComplete(){ ['quiz-screen','flash-screen'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  show('complete-screen'); const t=state.questions.length,sc=state.score;
+  document.getElementById('final-score').textContent=`${sc} / ${t}`;
+  document.getElementById('final-pct').textContent=`${t?Math.round(100*sc/t):0}% correct`; }
+
+// build the option set: correct + distractors, prefer same-category
+function buildOptions(q,key){
+  const same=TERMS.filter(t=>t!==q && t.c===q.c);
+  let distr=pickN(same,3);
+  if(distr.length<3){ const other=TERMS.filter(t=>t!==q && t.c!==q.c); distr=distr.concat(pickN(other,3-distr.length)); }
+  const opts=shuffle([q,...distr]).map(t=>({label:t[key],term:t}));
+  return opts;
+}
+
+/* ---------- QUIZ ---------- */
+function renderQuiz(){
+  const q=state.questions[state.idx]; const d2t=state.dir==='def2term';
+  document.getElementById('q-index').textContent=state.idx+1;
+  document.getElementById('q-score').textContent=state.score;
+  document.getElementById('q-progress').style.width=(100*state.idx/state.questions.length)+'%';
+  document.getElementById('q-cat').textContent=q.c;
+  document.getElementById('q-question-text').textContent = d2t
+    ? q.d
+    : 'What does “'+q.t+'” do / mean?';
+  const key = d2t ? 't' : 'd';            // option label field
+  const correct = q[key];
+  const opts=buildOptions(q,key);
+  const wrap=document.getElementById('q-options'); wrap.innerHTML='';
+  wrap.classList.toggle('one', !d2t);     // definitions are long → single column
+  opts.forEach((o,i)=>{ const b=document.createElement('button'); b.className='option'; b.dataset.text=o.label;
+    b.innerHTML=`<span class="key">${i+1}</span><span>${esc(o.label)}</span>`;
+    b.addEventListener('click',()=>chooseOption(b,o.label,correct)); wrap.appendChild(b); });
+  const fb=document.getElementById('q-feedback'); fb.className='feedback hidden'; fb.textContent='';
+  state.answered=false; document.getElementById('next-btn').disabled=true;
+}
+function chooseOption(btn,chosen,correct){
+  if(state.answered) return; state.answered=true;
+  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true;
+    if(o.dataset.text===correct) o.classList.add('correct'); else if(o===btn) o.classList.add('wrong'); });
+  const fb=document.getElementById('q-feedback');
+  if(chosen===correct){ state.score++; fb.className='feedback correct'; fb.textContent='✓ Correct!'; }
+  else { fb.className='feedback wrong'; fb.textContent='✗ Correct answer: '+correct; }
+  document.getElementById('q-score').textContent=state.score;
+  document.getElementById('next-btn').disabled=false;
+}
+function skipQuestion(){ if(state.answered) return; const q=state.questions[state.idx]; const correct=state.dir==='def2term'?q.t:q.d;
+  state.answered=true;
+  document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true; if(o.dataset.text===correct) o.classList.add('correct'); });
+  const fb=document.getElementById('q-feedback'); fb.className='feedback wrong'; fb.textContent='Answer: '+correct;
+  document.getElementById('next-btn').disabled=false; }
+function nextQuestion(){ state.idx++; if(state.idx>=state.questions.length) showComplete(); else renderQuiz(); }
+
+/* ---------- FLASHCARDS ---------- */
+function renderFlash(){ const q=state.questions[state.idx]; const d2t=state.dir==='def2term';
+  document.getElementById('f-index').textContent=state.idx+1;
+  document.getElementById('f-cat').textContent=q.c;
+  document.getElementById('f-progress').style.width=(100*(state.idx+1)/state.questions.length)+'%';
+  document.getElementById('flash-front').textContent = d2t ? q.d : q.t;
+  document.getElementById('flash-back').textContent  = d2t ? q.t : q.d;
+  document.getElementById('flash-inner').classList.remove('flipped'); }
+function flipFlash(){ document.getElementById('flash-inner').classList.toggle('flipped'); }
+
+document.addEventListener('DOMContentLoaded',()=>{
+  if(!G){ document.getElementById('setup').innerHTML='<h2>glossary.js failed to load.</h2>'; return; }
+  buildCatChecks(); updatePoolSize();
+  document.getElementById('all-btn').addEventListener('click',()=>{document.querySelectorAll('#cat-checks input').forEach(i=>i.checked=true);updatePoolSize();});
+  document.getElementById('none-btn').addEventListener('click',()=>{document.querySelectorAll('#cat-checks input').forEach(i=>i.checked=false);updatePoolSize();});
+  document.getElementById('start-btn').addEventListener('click',startSession);
+  document.getElementById('next-btn').addEventListener('click',nextQuestion);
+  document.getElementById('skip-btn').addEventListener('click',skipQuestion);
+  document.getElementById('flash-inner').addEventListener('click',flipFlash);
+  document.getElementById('f-flip-btn').addEventListener('click',e=>{e.stopPropagation();flipFlash();});
+  document.getElementById('f-next-btn').addEventListener('click',()=>{ if(state.idx<state.questions.length-1){state.idx++;renderFlash();} else resetToSetup(); });
+  document.getElementById('f-prev-btn').addEventListener('click',()=>{ if(state.idx>0){state.idx--;renderFlash();} });
+  document.addEventListener('keydown',e=>{
+    if(!state) return;
+    if(state.mode==='quiz'){
+      if(!state.answered && /^[1-6]$/.test(e.key)){ const o=document.querySelectorAll('#q-options .option')[+e.key-1]; if(o)o.click(); }
+      else if(e.key==='Enter' && !document.getElementById('next-btn').disabled) nextQuestion();
+      else if(e.key.toLowerCase()==='s' && !state.answered) skipQuestion();
+    } else {
+      if(e.key===' '){ e.preventDefault(); flipFlash(); }
+      else if(e.key==='ArrowRight') document.getElementById('f-next-btn').click();
+      else if(e.key==='ArrowLeft') document.getElementById('f-prev-btn').click();
+    }
+  });
+});
+</script>
+</body>
+</html>
