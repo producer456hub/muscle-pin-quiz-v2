@@ -128,10 +128,13 @@
   </section>
 
   <section id="complete-screen" class="card hidden">
-    <div class="complete"><h2>Session complete!</h2>
+    <div class="complete"><h2 id="complete-title">Session complete!</h2>
       <div id="final-score" class="big-score">0 / 0</div>
       <div id="final-pct" class="subtitle">0%</div>
-      <div style="margin-top:20px;"><button onclick="resetToSetup()">New session</button></div></div>
+      <div id="missed-info" class="subtitle hidden" style="margin-top:10px;"></div>
+      <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button id="retry-missed-btn" class="hidden" onclick="retryMissed()">↻ Retry missed</button>
+        <button class="secondary" onclick="resetToSetup()">New session</button></div></div>
   </section>
 </div>
 
@@ -169,7 +172,7 @@ function startSession(){
   if(order==='shuffle') shuffle(qs);
   const n = cs==='all'?qs.length:Math.min(parseInt(cs,10),qs.length);
   qs=qs.slice(0,n);
-  state={dir,mode,questions:qs,idx:0,score:0,answered:false};
+  state={dir,mode,questions:qs,idx:0,score:0,answered:false,missed:[],round:1};
   document.getElementById('setup').classList.add('hidden');
   if(mode==='quiz'){ show('quiz-screen'); document.getElementById('q-total').textContent=qs.length; renderQuiz(); }
   else { show('flash-screen'); document.getElementById('f-total').textContent=qs.length; renderFlash(); }
@@ -181,7 +184,32 @@ function resetToSetup(){ state=null; ['quiz-screen','flash-screen','complete-scr
 function showComplete(){ ['quiz-screen','flash-screen'].forEach(id=>document.getElementById(id).classList.add('hidden'));
   show('complete-screen'); const t=state.questions.length,sc=state.score;
   document.getElementById('final-score').textContent=`${sc} / ${t}`;
-  document.getElementById('final-pct').textContent=`${t?Math.round(100*sc/t):0}% correct`; }
+  document.getElementById('final-pct').textContent=`${t?Math.round(100*sc/t):0}% correct`;
+  const missed=(state.missed||[]), round=state.round||1;
+  const title=document.getElementById('complete-title');
+  const info=document.getElementById('missed-info');
+  const retry=document.getElementById('retry-missed-btn');
+  if(missed.length){
+    title.textContent = round>1 ? `Round ${round} complete!` : 'Session complete!';
+    info.textContent = `${missed.length} to clear — retry just these until you get them all.`;
+    info.classList.remove('hidden');
+    retry.textContent = `↻ Retry ${missed.length} missed`;
+    retry.classList.remove('hidden');
+  } else {
+    title.textContent = round>1 ? '🎉 All cleared — every miss corrected!' : '🎉 Perfect score!';
+    info.classList.add('hidden');
+    retry.classList.add('hidden');
+  }
+}
+function retryMissed(){
+  if(!state||!(state.missed||[]).length) return;
+  const qs=shuffle(state.missed.slice());
+  state={dir:state.dir,mode:'quiz',questions:qs,idx:0,score:0,answered:false,missed:[],round:(state.round||1)+1};
+  document.getElementById('complete-screen').classList.add('hidden');
+  show('quiz-screen');
+  document.getElementById('q-total').textContent=qs.length;
+  renderQuiz();
+}
 
 // build the option set: correct + distractors, prefer same-category
 function buildOptions(q,key){
@@ -219,12 +247,12 @@ function chooseOption(btn,chosen,correct){
     if(o.dataset.text===correct) o.classList.add('correct'); else if(o===btn) o.classList.add('wrong'); });
   const fb=document.getElementById('q-feedback');
   if(chosen===correct){ state.score++; fb.className='feedback correct'; fb.textContent='✓ Correct!'; }
-  else { fb.className='feedback wrong'; fb.textContent='✗ Correct answer: '+correct; }
+  else { fb.className='feedback wrong'; fb.textContent='✗ Correct answer: '+correct; state.missed.push(state.questions[state.idx]); }
   document.getElementById('q-score').textContent=state.score;
   document.getElementById('next-btn').disabled=false;
 }
 function skipQuestion(){ if(state.answered) return; const q=state.questions[state.idx]; const correct=state.dir==='def2term'?q.t:q.d;
-  state.answered=true;
+  state.answered=true; state.missed.push(q);
   document.querySelectorAll('#q-options .option').forEach(o=>{ o.disabled=true; if(o.dataset.text===correct) o.classList.add('correct'); });
   const fb=document.getElementById('q-feedback'); fb.className='feedback wrong'; fb.textContent='Answer: '+correct;
   document.getElementById('next-btn').disabled=false; }
